@@ -43,6 +43,14 @@ body{background:#390919;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
 #anniu-huanren{position:absolute;top:10px;right:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:4px 10px;font-size:16px;cursor:pointer;color:#f0e6ec;transition:background .2s;}
 #anniu-huanren:hover{background:rgba(255,255,255,0.15);}
 #anniu-huanren:disabled{opacity:.35;cursor:not-allowed;}
+#anniu-huanren.xintiao{background:rgba(249,168,212,0.25);border-color:#f9a8d4;color:#fde8f3;animation:xintiao-tiaodong 1s ease-in-out infinite;}
+@keyframes xintiao-tiaodong{
+  0%{transform:scale(1);box-shadow:0 0 0 0 rgba(249,168,212,0.6);}
+  15%{transform:scale(1.12);}
+  30%{transform:scale(1);}
+  45%{transform:scale(1.08);box-shadow:0 0 0 6px rgba(249,168,212,0);}
+  100%{transform:scale(1);box-shadow:0 0 0 0 rgba(249,168,212,0);}
+}
 .kaipian-toubiao{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.1);margin:8px auto;display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden;}
 #toubiao-img{line-height:1;}
 .kaipian-toubiao.toubiao-hei{border:3px solid #1a1a1a;}
@@ -986,11 +994,13 @@ function chuliLiaotian() {
 
 function chuliHuanren() {
   if (ZHUANGTAI.youxiJieshu) return;
-  // 奇遇模式下puppy的特殊3次点击机制
+  // 奇遇模式下puppy的特殊点击机制
   if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy') {
     ZHUANGTAI.puppyHuanrenCishu = (ZHUANGTAI.puppyHuanrenCishu || 0) + 1;
-    if (ZHUANGTAI.puppyHuanrenCishu <= 3) {
-      // 显示服务器错误弹窗（前3次）
+    // 玩家已点击，移除心跳高亮
+    DOM.huanren.classList.remove('xintiao');
+    if (ZHUANGTAI.puppyHuanrenCishu <= 2) {
+      // 显示服务器错误弹窗（前2次）
       document.getElementById('fuwucq-biaoti').textContent = '😵 服务器开小差了';
       document.getElementById('fuwucq-neirong').textContent = '啊哦...服务器开小差了，请重新尝试换人吧！';
       document.getElementById('fuwucu-queding').textContent = '好的';
@@ -1066,8 +1076,8 @@ function chuliKuitan() {
 }
 
 function guanbiFuwuCuo() {
-  // puppy第3次点击：弹窗内文案变化
-  if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy' && ZHUANGTAI.puppyHuanrenCishu === 3) {
+  // puppy第2次点击：弹窗内文案变化
+  if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy' && ZHUANGTAI.puppyHuanrenCishu === 2) {
     const neirongEl = document.getElementById('fuwucq-neirong');
     const btnEl = document.getElementById('fuwucu-queding');
     // 先添加乱码抖动效果，持续0.05秒
@@ -1100,8 +1110,8 @@ function guanbiFuwuCuo() {
     return;
   }
   document.getElementById('mohei-fuwucq').style.display = 'none';
-  // puppy前2次只关闭，不启动对话
-  if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy' && ZHUANGTAI.puppyHuanrenCishu < 3) {
+  // puppy第1次只关闭，不启动对话
+  if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy' && ZHUANGTAI.puppyHuanrenCishu < 2) {
     return;
   }
   // 非puppy奇遇模式：关闭后启动对话
@@ -1262,6 +1272,9 @@ async function kaiqiQiyu(quidingJuese) {
     await xianshiJiemiTishi('咦，怎么不能挤眼了....', 1500);
     await new Promise(r => setTimeout(r, 50));
     await xianshiJiemiTishi('那换一个人试试', 2000);
+    // 文本框消失后，高亮"换一个"按钮（心跳样式），引导玩家点击
+    const huanrenBtn = document.getElementById('anniu-huanren');
+    if (huanrenBtn) huanrenBtn.classList.add('xintiao');
     return;
   }
   // 非puppy奇遇
