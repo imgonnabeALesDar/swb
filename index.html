@@ -8,7 +8,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#390919;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;color:#f0e6ec;overflow-x:hidden;min-height:100vh;}
 @media(min-width:501px){
-  body{background:#373d49;}
+  body{background:#390919;}
   #youxi-rongqi{background:radial-gradient(ellipse at center,rgba(57,9,25,0.3) 0%,transparent 70%);}
 }
 #youxi-rongqi{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;}
@@ -544,7 +544,7 @@ const JIEJUE_SHUJU = {
   '6':  {biaoqing:'💞',mingcheng:'直到死亡把我们分开',wenben:'她问过你："你为什么会选择我？"\n你说："因为你在这里。"\n\n两个破碎的人拼在一起，也许就是完整的。\n她不会再消失了，因为你也不会走。\n\n那个蓝色头发的女孩，终于不用再一个人等了。\n而你，终于有一个值得留下来的理由。'},
   '7':  {biaoqing:'👻',mingcheng:'神秘的消失',wenben:'她最后一条消息是："我走了，别找我。"\n你等了一天，一周，一个月。\n她的头像再也没有亮起来过。\n\n你不知道她去了哪里，也不知道她是不是真的存在过。\n也许她只是你绝望时的一场梦，\n也许是平行宇宙里那个同样孤独的蓝色女孩。\n\n但你的手机里还留着她的聊天记录。\n你舍不得删。'},
   '8':  {biaoqing:'⛔',mingcheng:'【占位：结局8-Ex前任线坏结局——填充区B】',wenben:'【占位：结局8正文——填充区B】'},
-  '9':  {biaoqing:'🐾',mingcheng:'【占位：结局9-Puppy阴湿女鬼线——填充区B】',wenben:'【占位：结局9正文——填充区B】'},
+  '9':  {biaoqing:'🐾',mingcheng:'【终身小狗】',wenben:'有这样如影随形的小狗多么令人嫉妒呀...一定要好好爱小狗哦，否则小狗就杀掉你。'},
   '10': {biaoqing:'🐕',mingcheng:'【占位：结局10-Puppy阴湿女鬼线分支——填充区B】',wenben:'【占位：结局10正文——填充区B】'}
 };
 
@@ -605,7 +605,7 @@ const DUIHUA_SHU = {
     }
   },
   puppy: {
-    toubiao:'🥰', nicheng:'puppy', xianshiWeixi:0,
+    toubiao:'🫣', nicheng:'puppy', xianshiWeixi:0,
     bianhuaJiedian:'puppy-i',
     bianhuaToubiao:'🤗', bianhuaNicheng:'puppy', bianhuaQianming:'蹲到了！',
     jiedian: {
@@ -618,16 +618,12 @@ const DUIHUA_SHU = {
         {wenben:'很高兴认识你',xiayibu:'puppy-d'}
       ]},
       'puppy-c': {npcfawen:'哦？我可不是刚认识姐姐哦。姐姐挤眼很频繁吧？已经关注你很久啦。',xuanxiang:[
-        {wenben:'我很少交友',xiayibu:'puppy-e'},
+        {wenben:'我很少交友',xiayibu:'puppy-f'},
         {wenben:'是有点频繁',xiayibu:'puppy-d'}
       ]},
       'puppy-d': {npcfawen:'姐姐很真诚呢~我更开心了，要出来见见吗？想见姐姐。',xuanxiang:[
-        {wenben:'不见面',xiayibu:'puppy-f2'},
+        {wenben:'不见面',xiayibu:'puppy-f2',zhendongLuanma:true},
         {wenben:'见面',xiayibu:'puppy-f2'}
-      ]},
-      'puppy-e': {npcfawen:'姐姐很真诚呢~我更开心了，要出来见见吗？想见姐姐。',xuanxiang:[
-        {wenben:'不见面',xiayibu:'puppy-f'},
-        {wenben:'见面',xiayibu:'puppy-f'}
       ]},
       'puppy-f': {npcfawen:'姐姐不诚实。明明。认识了很多妹妹不是吗？惩罚姐姐一定要出来见我',xuanxiang:[
         {wenben:'不见面',xiayibu:'puppy-f2',zhendongLuanma:true},
@@ -644,7 +640,7 @@ const DUIHUA_SHU = {
       'puppy-h': {npcfawen:'为什么？为什么？为什么？为什么？为什么？为什么？为什么？为什么？为什么？',luanmaXuanxiang:true,xiayibu:'puppy-j',xuanxiang:[]},
       'puppy-i': {npcfawen:'那和姐姐约定好了哦，这辈子都要陪在我身边了。',shifouBianhua:true,xuanxiang:[]},
       'puppy-i2': {npcfawen:'我哪里不好？你喜欢上谁了？我哪里不好？你喜欢上谁了？我哪里不好？你喜欢上谁了？',luanmaXuanxiang:true,xiayibu:'puppy-k',xuanxiang:[]},
-      'puppy-j': {npcfawen:'约定好了，这辈子都陪在身边。',shifouBianhua:true,xiayibu:'puppy-i2',xuanxiang:[]},
+      'puppy-j': {npcfawen:'谁压你手了？谁压你手了？谁压你手了？谁压你手了？',shifouBianhua:true,xiayibu:'puppy-i2',xuanxiang:[]},
       'puppy-k': {npcfawen:'你为什么不说话？回答我！你为什么不说话？回答我！你为什么不说话？回答我！',luanmaXuanxiang:false,xuanxiang:[
         {wenben:'离开游戏',xiayibu:'puppy-i',luanmaBianWen:'回答我爱你'},
         {wenben:'回答我爱你',xiayibu:'puppy-i'}
@@ -813,18 +809,20 @@ function guanbiFankui() {
 }
 
 /* ==================== 揭示标签 Toast ==================== */
-function xianshiJiemiTishi(wenben) {
-  const yuanSu = document.createElement('div');
-  yuanSu.className = 'tishi-jiemi';
-  yuanSu.textContent = wenben;
-  document.body.appendChild(yuanSu);
-  requestAnimationFrame(() => {
-    yuanSu.classList.add('xianshi');
+function xianshiJiemiTishi(wenben, tingliu) {
+  return new Promise(resolve => {
+    const yuanSu = document.createElement('div');
+    yuanSu.className = 'tishi-jiemi';
+    yuanSu.textContent = wenben;
+    document.body.appendChild(yuanSu);
+    requestAnimationFrame(() => {
+      yuanSu.classList.add('xianshi');
+    });
+    setTimeout(() => {
+      yuanSu.classList.remove('xianshi');
+      setTimeout(() => { yuanSu.remove(); resolve(); }, 300);
+    }, tingliu || 1500);
   });
-  setTimeout(() => {
-    yuanSu.classList.remove('xianshi');
-    setTimeout(() => yuanSu.remove(), 300);
-  }, 1500);
 }
 function xianshiQiyuTishi(wenben, huiche) {
   return new Promise(resolve => {
@@ -867,8 +865,9 @@ function gengxinJiemian() {
   DOM.tianchongYayiya.style.background = jisuanYayiyaYanse(yayiyaBfb);
   DOM.tianchongWending.style.background = jisuanWendingYanse(wendingBfb);
   gengxinKaipian();
-  // 聊天按钮状态
-  DOM.liaotian.disabled = !!ZHUANGTAI.liaotianYongguoBenHuihe;
+  // 聊天按钮状态：无隐藏标签时禁用（有几个隐藏标签就可以点击几次）
+  const youYincang = ZHUANGTAI.dangqianDuixiang && ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao.some(b => b.yincang);
+  DOM.liaotian.disabled = !youYincang;
   // 窥探按钮
   DOM.kuitan.disabled = !!ZHUANGTAI.kuitanYongguo;
   // 空窗按钮
@@ -881,8 +880,8 @@ function gengxinKaipian() {
   DOM.toubiaoImg.textContent = dx.toubiao;
   DOM.nichengWenzi.textContent = dx.nicheng;
   DOM.kaipianQianming.textContent = dx.qianming || '';
-  // 头像黑框
-  if (dx.shifouBianhua) { DOM.kaipianToubiao.classList.add('toubiao-hei'); } else { DOM.kaipianToubiao.classList.remove('toubiao-hei'); }
+  // 头像黑框（puppy异变不加黑框）
+  if (dx.shifouBianhua && ZHUANGTAI.duihuaJuese !== 'puppy') { DOM.kaipianToubiao.classList.add('toubiao-hei'); } else { DOM.kaipianToubiao.classList.remove('toubiao-hei'); }
   // 标签
   const biaoqianqu = DOM.kaipianBiaoqianqu;
   biaoqianqu.innerHTML = '';
@@ -965,23 +964,22 @@ function chuliXingdong(leixing) {
 }
 
 function chuliLiaotian() {
-  if (ZHUANGTAI.youxiJieshu || ZHUANGTAI.liaotianYongguoBenHuihe) return;
-  ZHUANGTAI.liaotianYongguoBenHuihe = true;
+  if (ZHUANGTAI.youxiJieshu) return;
+  // 检查当前对象是否还有隐藏标签
+  const dx = ZHUANGTAI.dangqianDuixiang;
+  const yincangBiaoqian = dx.biaoqianLiebiao.filter(b => b.yincang);
+  if (yincangBiaoqian.length === 0) return;
   ZHUANGTAI.yayiya += 2;
   ZHUANGTAI.wending -= 1;
   ZHUANGTAI.yayiya = xianzhiFanwei(ZHUANGTAI.yayiya, 0, 100);
   ZHUANGTAI.wending = xianzhiFanwei(ZHUANGTAI.wending, 0, 100);
   ZHUANGTAI.xingdongJishu.liaotian++;
   // 揭示一个隐藏标签
-  const dx = ZHUANGTAI.dangqianDuixiang;
-  const yincangBiaoqian = dx.biaoqianLiebiao.filter(b => b.yincang);
   if (yincangBiaoqian.length > 0) {
     const jiemiqu = yincangBiaoqian[0];
     jiemiqu.yincang = false;
     jiemiqu.weixi = jiemiqu.weixiZhen !== undefined ? jiemiqu.weixiZhen : jiemiqu.weixi;
     xianshiJiemiTishi('解锁了新标签');
-  } else {
-    xianshiFankui('没有更多隐藏标签了', false);
   }
   gengxinJiemian();
 }
@@ -1230,14 +1228,17 @@ async function kaiqiQiyu(quidingJuese) {
     xuanzhong = suijiCongShuzu(jueses);
   }
   ZHUANGTAI.duihuaJuese = xuanzhong;
-  // 设置数值
-  ZHUANGTAI.yayiya = 0;
-  ZHUANGTAI.wending = 100;
+  // puppy线不修改数值，保持当前状态
   // 隐藏4个行动按钮
   DOM.jiyan.disabled = true;
   DOM.aime.disabled = true;
   DOM.yuejian.disabled = true;
   DOM.yuejiudian.disabled = true;
+  // 禁用阴暗窥探和空窗自我成长按钮
+  ZHUANGTAI.kuitanYongguo = true;
+  ZHUANGTAI.kongchuangYongguo = true;
+  DOM.kuitan.disabled = true;
+  DOM.kongchuang.disabled = true;
   // 生成奇遇对象
   const shuju = DUIHUA_SHU[xuanzhong];
   ZHUANGTAI.dangqianDuixiang = {
@@ -1249,22 +1250,24 @@ async function kaiqiQiyu(quidingJuese) {
   };
   if (xuanzhong === 'puppy') {
     ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao = [
-      {wenzi:'活泼',weixi:0,yincang:false},
+      {wenzi:'害羞',weixi:0,yincang:false},
       {wenzi:'阳光小狗',weixi:0,yincang:false},
       {wenzi:'听姐姐的话',weixi:0,yincang:false}
     ];
-    ZHUANGTAI.dangqianDuixiang.qianming = '好想被爱';
+    ZHUANGTAI.dangqianDuixiang.qianming = '蹲一个姐姐';
   }
   gengxinJiemian();
   // puppy也需要显示提示
   if (xuanzhong === 'puppy') {
-    xianshiJiemiTishi('咦，怎么不能挤眼了....');
-    await xianshiQiyuTishi('那换人试试..？', true);
+    await xianshiJiemiTishi('咦，怎么不能挤眼了....', 1500);
+    await new Promise(r => setTimeout(r, 50));
+    await xianshiJiemiTishi('那换一个人试试', 2000);
     return;
   }
   // 非puppy奇遇
-  xianshiJiemiTishi('咦，怎么不能挤眼了....');
-  await xianshiQiyuTishi('那换人试试..？', true);
+  await xianshiJiemiTishi('咦，怎么不能挤眼了....', 1500);
+  await new Promise(r => setTimeout(r, 50));
+  await xianshiJiemiTishi('那换一个人试试', 2000);
   setTimeout(() => {
     document.getElementById('mohei-fuwucq').style.display = 'flex';
     const huanrenBtn = document.getElementById('anniu-huanren');
@@ -1513,9 +1516,11 @@ async function duihuaJinzhan(jiedianId) {
     if (xx.luanmaBianWen) {
       btn.classList.add('luanma-zhendong');
       const yuanWenben = xx.wenben;
+      btn.style.pointerEvents = 'none';
       setTimeout(() => {
         btn.classList.remove('luanma-zhendong');
         btn.textContent = xx.luanmaBianWen;
+        btn.style.pointerEvents = 'auto';
       }, 2000);
     }
     btn.onclick = () => duihuaXuanze(xx.xiayibu);
