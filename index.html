@@ -6,14 +6,14 @@
 <title>挤眼模拟器</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#3b0a1a;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;color:#f0e6ec;overflow-x:hidden;min-height:100vh;}
+body{background:#390919;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;color:#f0e6ec;overflow-x:hidden;min-height:100vh;}
 @media(min-width:501px){
   body{background:#373d49;}
-  #youxi-rongqi{background:radial-gradient(ellipse at center,rgba(72,27,42,0.3) 0%,transparent 70%);}
+  #youxi-rongqi{background:radial-gradient(ellipse at center,rgba(57,9,25,0.3) 0%,transparent 70%);}
 }
 #youxi-rongqi{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;}
 @media(min-width:501px){
-  .mban{background:rgba(72,27,42,0.92);}
+  .mban{background:rgba(57,9,25,0.92);}
 }
 .mban{width:100%;max-width:480px;background:rgba(255,255,255,0.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:24px 20px;position:relative;min-height:600px;}
 @media(max-width:500px){
@@ -27,7 +27,7 @@ body{background:#3b0a1a;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
 .dinglan-qiyu{display:flex;align-items:center;gap:6px;}
 #gouzi-qiyu{appearance:none;-webkit-appearance:none;width:16px;height:16px;border:1.5px solid rgba(255,255,255,0.35);border-radius:3px;background:rgba(255,255,255,0.06);cursor:pointer;position:relative;transition:all .2s;}
 #gouzi-qiyu:checked{background:#f9a8d4;border-color:#f9a8d4;}
-#gouzi-qiyu:checked::after{content:'✓';position:absolute;top:-1px;left:2px;font-size:12px;color:#1a0510;font-weight:700;}
+#gouzi-qiyu:checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:12px;color:#1a0510;font-weight:700;}
 .qiyu-wenzi{font-size:12px;color:rgba(255,255,255,0.55);}
 .shuzhitiao-qu{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
 .shuzhitiao--yayiya,.shuzhitiao--wending{display:flex;align-items:center;gap:8px;}
@@ -70,7 +70,9 @@ body{background:#3b0a1a;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
 .fankui{display:none;}
 #mohei-fankui{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);z-index:1800;display:flex;align-items:center;justify-content:center;padding:20px;}
 #mohei-fankui .mohei-neirong{max-width:360px;}
-#mohei-fankui .mohei-neirong .fankui-wenben{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.8);margin-bottom:16px;word-break:break-word;}
+#mohei-fankui .mohei-neirong .fankui-biaoti{font-size:16px;font-weight:700;color:#f9a8d4;margin-bottom:10px;}
+#mohei-fankui .mohei-neirong .fankui-wenbenkuang{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;margin-bottom:16px;text-align:left;}
+#mohei-fankui .mohei-neirong .fankui-wenben{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.8);word-break:break-word;margin:0;}
 #mohei-fankui .mohei-neirong .fankui-wenben.fankui-wenben--hao{color:#6ee7b7;}
 #mohei-fankui .mohei-neirong .fankui-wenben.fankui-wenben--huai{color:#fda4af;}
 .tishi-jiemi{position:fixed;top:0;left:50%;transform:translateX(-50%) translateY(-100%);background:rgba(0,0,0,0.85);color:#fff;padding:10px 20px;border-radius:0 0 12px 12px;font-size:14px;z-index:1100;pointer-events:none;transition:transform 0.3s ease;}
@@ -103,7 +105,7 @@ body{background:#3b0a1a;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
 #jiejue-mingcheng{font-size:22px;font-weight:800;margin-bottom:10px;background:linear-gradient(135deg,#f9a8d4,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .jiejue-xiaobiaoti{font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px;letter-spacing:1px;}
 #jiejue-biaoqing{font-size:40px;margin-bottom:10px;}
-#jiejue-wenben{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.7);}
+#jiejue-wenben{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.7);white-space:pre-line;}
 #anniu-chakanfupan,#anniu-zailaiyiju{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.13);border-radius:12px;padding:10px 20px;font-size:14px;font-weight:600;color:#f0e6ec;cursor:pointer;margin:4px;transition:background .2s;}
 #anniu-chakanfupan:hover,#anniu-zailaiyiju:hover{background:rgba(255,255,255,0.16);}
 .fupan-rongqi{text-align:left;margin-top:16px;}
@@ -146,16 +148,16 @@ body{background:#3b0a1a;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
   <!-- 合规弹窗 -->
   <div id="mohei-guihe">
     <div class="mohei-neirong popIn">
-      <h2>【占位：合规声明标题——填充区A】</h2>
-      <p>【占位：合规声明正文，本游戏纯属虚构娱乐用途，涉及内容均为模拟情境，不构成任何现实建议。继续即表示您已了解并同意以上声明。——填充区A】</p>
+      <h2>⚠️ 内容提示</h2>
+      <p>本游戏涉及以下内容：<br>· 情感关系的模拟与夸张呈现<br>· 对心理状态的拟真描写（焦虑、压抑、情绪崩溃等）<br>· 女性同性情感文化相关内容<br>· 部分幽默化处理的成人向暗示<br><br>本游戏仅供娱乐，所有角色、事件和文案均为虚构，不代表任何真实个体或群体的立场。游戏中的"标签"系统是对社交软件刻板印象的戏仿，不代表开发团队对任何群体的偏见或歧视。<br><br>如果你正在经历情感困扰或心理压力，请寻求专业帮助，你不是一个人。<br><br>请确认您已年满 18 岁后继续。</p>
       <button onclick="querenGuihe()">我已了解，继续</button>
     </div>
   </div>
   <!-- 介绍弹窗 -->
   <div id="mohei-jieshao" style="display:none">
     <div class="mohei-neirong popIn">
-      <h2>【占位：游戏介绍标题——填充区B】</h2>
-      <p>【占位：游戏介绍正文。欢迎来到挤眼模拟器！在这里你将通过一系列社交互动体验情感的起伏与自我探索。注意管理你的心理压抑值和心情稳定值，选择不同的行动策略来探索不同的结局。——填充区B】</p>
+      <h2>🎯 目标：在压抑吞噬你之前，找到内心的平衡</h2>
+      <p>· 每个对象只能选择一次固定行动——挤眼、暧昧、见面还是酒店，你自己选<br>· 隐藏标签需要聊天才能解锁，但聊天会让你更焦虑<br>· 心理压抑值和心情稳定值会影响你的结局<br>· 采取行动会让你更稳定——但被拒绝会让你更崩溃<br>· 你的每个选择都会影响最终结局——是学会爱人，还是学会爱己？</p>
       <button onclick="kaishiYouxi()">开始游戏</button>
     </div>
   </div>
@@ -194,10 +196,10 @@ body{background:#3b0a1a;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
       </div>
       <button id="anniu-chakanjiejue" onclick="chuliChakanJiejue()" style="display:none;width:100%;background:linear-gradient(135deg,#f9a8d4,#c084fc);border:none;border-radius:12px;padding:12px;font-size:15px;font-weight:700;color:#1a0510;cursor:pointer;margin-bottom:8px;">查看结局</button>
       <div class="xingdongqu" id="xingdongqu">
-        <button class="anniu-xingdong" id="anniu-jiyan" onclick="chuliXingdong('jiyan')">挤眼<span class="anniu-xiaozishu">压抑-3 稳定+2</span></button>
-        <button class="anniu-xingdong" id="anniu-aime" onclick="chuliXingdong('aime')">暧昧试试<span class="anniu-xiaozishu">压抑-7 稳定+3</span></button>
-        <button class="anniu-xingdong" id="anniu-yuejian" onclick="chuliXingdong('yuejian')">约见面<span class="anniu-xiaozishu">压抑-12 稳定+5</span></button>
-        <button class="anniu-xingdong" id="anniu-yuejiudian" onclick="chuliXingdong('yuejiudian')">约酒店<span class="anniu-xiaozishu">压抑-18 稳定+7</span></button>
+        <button class="anniu-xingdong" id="anniu-jiyan" onclick="chuliXingdong('jiyan')">😉挤眼<span class="anniu-xiaozishu">压抑-3 稳定+2</span></button>
+        <button class="anniu-xingdong" id="anniu-aime" onclick="chuliXingdong('aime')">💞暧昧试试<span class="anniu-xiaozishu">压抑-7 稳定+3</span></button>
+        <button class="anniu-xingdong" id="anniu-yuejian" onclick="chuliXingdong('yuejian')">🥂约见面<span class="anniu-xiaozishu">压抑-12 稳定+5</span></button>
+        <button class="anniu-xingdong" id="anniu-yuejiudian" onclick="chuliXingdong('yuejiudian')">🏩约酒店<span class="anniu-xiaozishu">压抑-18 稳定+7</span></button>
       </div>
       <div class="gongjuhang" id="gongjuhang">
         <button class="anniu-xingdong" id="anniu-kuitan" onclick="chuliKuitan()">👁 阴暗窥探<span class="anniu-xiaozishu">解锁全部标签</span></button>
@@ -234,7 +236,8 @@ body{background:#3b0a1a;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
   <!-- 行动结果弹窗 -->
   <div id="mohei-fankui" style="display:none">
     <div class="mohei-neirong popIn">
-      <p class="fankui-wenben" id="fankui-wenben"></p>
+      <p class="fankui-biaoti" id="fankui-biaoti"></p>
+      <div class="fankui-wenbenkuang" id="fankui-wenbenkuang"><p class="fankui-wenben" id="fankui-wenben"></p></div>
       <button onclick="guanbiFankui()">确认</button>
     </div>
   </div>
@@ -274,14 +277,20 @@ body{background:#3b0a1a;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
 
 /* 昵称池 */
 const MINGZI_CHI_ZHONGWEN = [
-  '【占位：小甜心——填充区D1】','【占位：草莓奶昔——填充区D2】','【占位：温柔的海——填充区D3】',
-  '【占位：月光猫咪——填充区D4】','【占位：银河少女——填充区D5】','【占位：蜜桃气泡水——填充区D6】',
-  '【占位：咖啡与猫——填充区D7】','【占位：晚风信笺——填充区D8】','【占位：霓虹回声——填充区D9】',
-  '【占位：薄荷心碎——填充区D10】','【占位：水晶蜗牛——填充区D11】','【占位：彩虹折纸——填充区D12】'
+  'NO BRA','急着下班','在逃牛马','不加微信','有点缺钱',
+  '早干嘛去了','别喜欢我','深夜emo专用','爱SJ','镇混',
+  '好女人不聊天','已读不回冠军','只要你主动','恋爱脑已切除','谈过3个都是直女',
+  '上一段还在还债','momo','已读不回是吧','ROSS值评','中药苦'
 ];
 
 /* 表情池 */
-const BIAOQING_CHI = ['😊','🥰','😘','🤭','😙','😎','🦋','🌸','🧚','🌙','✨','🍀'];
+const BIAOQING_CHI = [
+  "👩‍💼","👩‍🎨","👩‍🔬","👩",
+  "👩‍🎤","👩‍🍳","👩‍🎓","👩‍⚖️",
+  "👩‍🏫","👩‍✈️","👩‍🔧","👩‍🚀",
+  "🧕","👩‍🦰","👩‍🦱","👩‍🦳",
+  "💇‍♀️","🧑‍🎤","🦹‍♀️","🧝‍♀️"
+];
 
 /* 标签池 v6.1 - risk: 风险等级, yincang: 是否隐藏标签, paizhe: 排他组 */
 const BIAOQIAN_SHUJU = [
@@ -367,30 +376,35 @@ const BIAOQIAN_SHUJU = [
 
 /* 签名池 */
 const QIANMING_CHI = [
-  '【占位：签名-只想安静的爱你——填充区F1】','【占位：签名-生活不止眼前的苟且——填充区F2】',
-  '【占位：签名-相信缘分——填充区F3】','【占位：签名-今天也是想你的日子——填充区F4】',
-  '【占位：签名-寻找那个懂我的人——填充区F5】','【占位：签名-世界那么大我想去看看——填充区F6】'
+  '饿啊，草俗我','今天也是想被骂的一天','挤眼=喜欢，不挤=更喜欢','小号',
+  '所有前任都说我是好人','只是来交朋友的（才怪）','文艺逼','别挤眼了直接说喜欢我会死吗',
+  '一切仅供参考','冰岛无信号','下体为你燃烧','不需要被理解只需要被偏爱',
+  '挤过眼就算老婆了吧？','我不是渣，我只是心碎成很多片分给不同的人','心选姐在哪','喜欢磕cp',
+  '爱磕卡黄，还磕泰西','手指很长，其他不知道','要么全部要么全不','V群招人？'
 ];
 
 /* 行动数据 */
 const XINGDONG_SHUJU = {
-  jiyan:     {mingcheng:'挤眼',     yaliBianhua:-3, wendingBianhua:2,  huaiJilv:0.15},
-  aime:      {mingcheng:'暧昧试试', yaliBianhua:-7, wendingBianhua:3,  huaiJilv:0.28},
-  yuejian:   {mingcheng:'约见面',   yaliBianhua:-12,wendingBianhua:5,  huaiJilv:0.42},
-  yuejiudian:{mingcheng:'约酒店',   yaliBianhua:-18,wendingBianhua:7,  huaiJilv:0.80}
+  jiyan:     {mingcheng:'😉挤眼',     emoji:'😉', yaliBianhua:-3, wendingBianhua:2,  huaiJilv:0.15},
+  aime:      {mingcheng:'💞暧昧试试', emoji:'💞', yaliBianhua:-7, wendingBianhua:3,  huaiJilv:0.28},
+  yuejian:   {mingcheng:'🥂约见面',   emoji:'🥂', yaliBianhua:-12,wendingBianhua:5,  huaiJilv:0.42},
+  yuejiudian:{mingcheng:'🏩约酒店',   emoji:'🏩', yaliBianhua:-18,wendingBianhua:7,  huaiJilv:0.80}
 };
 
-/* 行动结果池 v6.1 */
+/* 行动结果池 v2.1 */
 const JIEGUO_SHUJU = {
   jiyan: {
     hao: [
       '对方回了你一个挤眼，也许是好的开始吧？',
-      '对方很快地给你回挤了，对自己更自信了..',
+      '对方很快地给你回挤了，对自己更自信了...',
       '你反复看她主页，发现她上线后的第一件事就是回挤你',
       '什么也没有发生...',
       '勇敢地迈出了一步',
       '等待回挤的过程好煎熬...',
-      '早知道约她见面了'
+      '早知道约她见面了',
+      '她不仅回挤了，还看了你的主页',
+      '你的手指在挤眼按钮上犹豫了三秒，但她秒回了',
+      '这一眼挤出去了，你感觉整个人都亮了'
     ],
     huai: [
       '哦吼...当晚没有等到后续....',
@@ -400,66 +414,135 @@ const JIEGUO_SHUJU = {
       '对方回挤了你，发来消息：撞号了哦',
       '对方回挤了你，再过几天你看她主页发现她已经绑了恋人',
       '你觉得自己有点多余',
-      '早知道不挤眼了'
+      '早知道不挤眼了',
+      '她回挤了——回给了你旁边的那个人',
+      '你挤了眼，对方回了一句：你是T还是P？'
     ]
   },
   aime: {
     hao: [
-      '对方回了你一句"你在干嘛呀"，心里好像有什么被轻轻戳了一下',
-      '暧昧的试探有了回应，心跳加速了好几拍',
-      '对方发来一张自拍，感觉距离拉近了一点',
-      '暧昧的空气在两个人之间流淌，一切都恰到好处'
+      '她回了你一句"你挺有意思的"，你的心跳快了一拍',
+      '暧昧的味道弥漫在空气中，两个人都不说破',
+      '她发了张自拍给你，配文"看看我今天怎么样"',
+      '你们聊到凌晨三点，谁都不想先说晚安',
+      '她开始用你专属的昵称叫你了',
+      '你发了一条暧昧的话，她回了三个点……但你注意到她在线到很晚',
+      '她说"你跟别人不太一样"，你信了',
+      '你发现自己开始期待她的消息了',
+      '她问你是不是对每个人都这么暖，你说不是',
+      '暧昧的第三天，她主动给你发了早安'
     ],
     huai: [
-      '聊到一半对方突然消失了，等了三小时才回"哦"',
-      '对方发来消息："我们只是朋友对吧？"',
-      '暧昧了一周后，对方的主页突然变成了情侣头像',
-      '对方把你当成了备选项，你从侧面得知她同时在撩好几个人'
+      '她回了你一个"😂"，你的心凉了半截',
+      '暧昧了三天，她突然换了情侣头像',
+      '她说"你是个好人"——你听到了死刑宣判',
+      '你暧昧了半天，发现她在跟另一个人暧昧',
+      '她说"我最近不想谈恋爱"，第二天就官宣了',
+      '她把你的暧昧当成了友情，还跟闺蜜分享了',
+      '聊着聊着她说：你好像我前男友',
+      '暧昧到一半，她问你：你介不介意我有个男朋友',
+      '她秒回了你，也秒回了另外三个人',
+      '你说想她，她说"别闹"——认真也不行？'
     ]
   },
   yuejian: {
     hao: [
-      '见面比想象中更自然，你们在咖啡馆聊了整个下午',
-      '第一次见面她带了小礼物，是注意到你随口提过的东西',
-      '见面后她主动发消息说"今天很开心"，感觉很真实'
+      '她比照片好看，你比照片紧张',
+      '见面那天她穿了你说过喜欢的颜色',
+      '她说"终于见到你了"，语气比想象中温柔',
+      '你们走了一下午，谁都没看手机',
+      '她帮你撑伞的时候，靠得比必要距离更近',
+      '见面比聊天轻松多了，也许你们真的合拍',
+      '她笑着说：下次还出来吗？你差点当场表白',
+      '她主动牵了你的手过马路，之后就没松开',
+      '你迟到了十分钟，她已经帮你点好了你爱喝的',
+      '散场的时候她说"今天好开心"，你的心化了一半'
     ],
     huai: [
-      '到约定地点后她放了鸽子，消息已读不回',
-      '见面后发现照片和本人差距巨大，对方全程看手机',
-      '她带了一个"朋友"一起来，气氛变得非常尴尬',
-      '见完后她再也没主动联系过你'
+      '她带了闺蜜来，你成了电灯泡的灯泡',
+      '见面三分钟，她说"我先走了"',
+      '她全程在跟手机聊天，你怀疑是在跟别的女孩',
+      '她说"你跟照片不太一样"——你也没P很过分吧',
+      '吃完饭AA制，她精确到了毛',
+      '见面发现她就是你想躲的那种人',
+      '她说"我们还是做朋友吧"，请你吃了顿最便宜的饭',
+      '她迟到了一小时，来的时候说"忘了，差点没来"',
+      '见面才知道她以为你是来交朋友的',
+      '她说你跟聊天时不太一样。废话，聊天有撤回功能'
     ]
   },
   yuejiudian: {
     hao: [
-      '这一夜你们之间的距离为零，什么都变得清晰了起来',
-      '房间里很暖，她睡着了之后你偷偷看了很久她的侧脸'
+      '那一晚，你什么都不怕了',
+      '她帮你吹头发的时候，你觉得什么都值了',
+      '你们聊了一整夜，到天亮也没觉得困',
+      '她比你想象中温柔，也比想象中认真',
+      '第二天早上她还在，你没想过这个画面会这么安心',
+      '她说"下次还来找我"，语气像在说一件理所当然的事',
+      '凌晨两点，你们在酒店天台上牵了手',
+      '你赌对了，至少这一次',
+      '她比你先醒来，盯着你看的样子像在确认你不是梦',
+      '退房的时候她牵着你，好像全世界都跟你们无关'
     ],
     huai: [
-      '第二天醒来她已经走了，留下一张纸条"不合适"',
-      '过程中她接了一个电话，说了声"宝宝等一下"，你愣住了',
-      '后来你在朋友圈看到她和别人去了同一家酒店'
+      '她凌晨三点走了，留下一句"我有点事"',
+      '第二天早上她比你先走，连条消息都没有',
+      '她把酒店照片发了朋友圈，配文是"姐妹聚会"——你不在照片里',
+      '第二天她说"昨晚的事就当没发生过吧"',
+      '她的手指很好看，但心不在你身上',
+      '酒店房间很安静，安静到你只能听见自己心碎的声音',
+      '她说"谢谢你陪我"——谢谢，不是喜欢',
+      '你醒来发现她在收拾东西，她说"我先走了，改天聊"',
+      '那一晚很美好，第二天她就把你删了',
+      '她走的时候亲了你一下，然后再也没有回过消息'
     ]
   }
 };
 
-/* 标签组合坏结果池 */
-const BIAOQIAN_ZUHE_HUAI = {
-  diwei: ['【占位：低危标签组合坏结果1——填充区C-1】','【占位：低危标签组合坏结果2——填充区C-1】','【占位：低危标签组合坏结果3——填充区C-1】','【占位：低危标签组合坏结果4——填充区C-1】','【占位：低危标签组合坏结果5——填充区C-1】'],
-  zhongwei: ['【占位：中危标签组合坏结果1——填充区C-1】','【占位：中危标签组合坏结果2——填充区C-1】','【占位：中危标签组合坏结果3——填充区C-1】','【占位：中危标签组合坏结果4——填充区C-1】','【占位：中危标签组合坏结果5——填充区C-1】'],
-  gaowei: ['【占位：高危标签组合坏结果1——填充区C-1】','【占位：高危标签组合坏结果2——填充区C-1】','【占位：高危标签组合坏结果3——填充区C-1】','【占位：高危标签组合坏结果4——填充区C-1】','【占位：高危标签组合坏结果5——填充区C-1】']
+/* 高风险坏结果增强池 */
+const JIEGUO_SHUJU_GAO_WEIXI = {
+  jiyan_huai_zhong: [
+    '她看了你一眼，然后拉黑了你',
+    '你挤了眼，她截图发到了闺蜜群里嘲笑'
+  ],
+  aime_huai_zhong: [
+    '暧昧了一周，你发现她是来找室友的不是找对象的',
+    '她说"你很适合当我闺蜜"——闺蜜，永远的闺蜜'
+  ],
+  yuejian_huai_zhong: [
+    '她带了男朋友来，说"你们可以交个朋友"',
+    '见面后她发朋友圈：今天见了个怪人'
+  ],
+  yuejiudian_huai_zhong: [
+    '你醒来发现手机和钱包都不见了',
+    '她走的时候说："你不会以为我们在一起了吧？"'
+  ]
 };
 
-/* 结局数据 v6.1 */
+/* 标签组合坏结果池 v2.1 */
+const BIAOQIAN_ZUHE_HUAI = [
+  '她比你还需要被照顾，这段关系还没开始你就已经累了',
+  '她约会只会约在酒吧，你连清醒地被拒绝的机会都没有',
+  '海王实锤，你就是她鱼塘里最新的一条鱼',
+  '她最终会回归主流，而你只是她青春里的一段插曲',
+  '她不是你的姐妹，她是你兄弟',
+  '她把每个前任都刻在身上，但最后嫁的不会是你',
+  '她随身带指套但不爱洗手……这画面你自己想',
+  '她的ID就是她的简历，你不信邪也没办法',
+  '她叫谁都兄弟，但她幻想的跟你完全不是一回事',
+  '天蝎的占有欲配上一句"我还是要结婚的"，毒上加毒'
+];
+
+/* 结局数据 v2.1 */
 const JIEJUE_SHUJU = {
-  '1a': {biaoqing:'🦋',mingcheng:'稳定的爱人能力',wenben:'多个无眠的夜晚，在一次次试炼中，你终于明白了爱人的不易...恭喜你，解锁稳定的爱人能力'},
-  '1b': {biaoqing:'🌿',mingcheng:'稳定的爱己能力',wenben:'终于，你知道了自己的心在哪个季节。恭喜你学会了如何爱自己，无论是单身还是恋爱，你都完整了自己。'},
-  '2':  {biaoqing:'💔',mingcheng:'想爱就爱',wenben:'见一个爱一个，挤眼挤到眼睛痉挛是你的归属...被几个女人一起伤害总比被同一个女人伤害好，你说是吧?'},
-  '3':  {biaoqing:'😡',mingcheng:'女同性恨',wenben:'伤害我吗？没关系，这下我也能诅咒你再也不会幸福了。'},
-  '4':  {biaoqing:'🤯',mingcheng:'谁还不会发疯了',wenben:'到底在爱来爱去爱什么啊...人类配被我爱吗，今天开始我再也不要爱姐了。妹妹我来了'},
-  '5':  {biaoqing:'💕',mingcheng:'【占位：结局5-Chloe救赎线好结局——填充区A】',wenben:'【占位：结局5正文——填充区A】'},
-  '6':  {biaoqing:'🥀',mingcheng:'【占位：结局6-Chloe救赎线坏结局——填充区A】',wenben:'【占位：结局6正文——填充区A】'},
-  '7':  {biaoqing:'🔄',mingcheng:'【占位：结局7-Ex前任线好结局——填充区B】',wenben:'【占位：结局7正文——填充区B】'},
+  '1a': {biaoqing:'❤️',mingcheng:'稳定的爱人能力',wenben:'多个无眠的夜晚，在一次次试炼中，你终于明白了爱人的不易……恭喜你，解锁稳定的爱人能力'},
+  '1b': {biaoqing:'🤍',mingcheng:'稳定的爱己能力',wenben:'终于，你知道了自己的心在哪个季节。恭喜你学会了如何爱自己，无论是单身还是恋爱，你都完整了自己。'},
+  '2':  {biaoqing:'🔥',mingcheng:'想爱就爱',wenben:'见一个爱一个，挤眼挤到眼睛痉挛是你的归属……被几个女人一起伤害总比被同一个女人伤害好，你说是吧？'},
+  '3':  {biaoqing:'🖤',mingcheng:'女同性恨',wenben:'伤害我吗？没关系，这下我也能诅咒你再也不会幸福了。'},
+  '4':  {biaoqing:'🤪',mingcheng:'谁还不会发疯了',wenben:'到底在爱来爱去爱什么啊……人类配被我爱吗，今天开始我再也不要爱姐了。妹妹我来了'},
+  '5':  {biaoqing:'💔',mingcheng:'你以为你是救世主？',wenben:'你试着走进她的世界，但你忘了——你自己的世界也是千疮百孔。\n\n她不需要你拯救，她需要的从来不是你。\n你以为你在发光，其实你只是在自焚。\n\n你没能救她，也没能救自己。\n但至少你试过了。\n\n……试过了，有用吗？'},
+  '6':  {biaoqing:'💞',mingcheng:'直到死亡把我们分开',wenben:'她问过你："你为什么会选择我？"\n你说："因为你在这里。"\n\n两个破碎的人拼在一起，也许就是完整的。\n她不会再消失了，因为你也不会走。\n\n那个蓝色头发的女孩，终于不用再一个人等了。\n而你，终于有一个值得留下来的理由。'},
+  '7':  {biaoqing:'👻',mingcheng:'神秘的消失',wenben:'她最后一条消息是："我走了，别找我。"\n你等了一天，一周，一个月。\n她的头像再也没有亮起来过。\n\n你不知道她去了哪里，也不知道她是不是真的存在过。\n也许她只是你绝望时的一场梦，\n也许是平行宇宙里那个同样孤独的蓝色女孩。\n\n但你的手机里还留着她的聊天记录。\n你舍不得删。'},
   '8':  {biaoqing:'⛔',mingcheng:'【占位：结局8-Ex前任线坏结局——填充区B】',wenben:'【占位：结局8正文——填充区B】'},
   '9':  {biaoqing:'🐾',mingcheng:'【占位：结局9-Puppy阴湿女鬼线——填充区B】',wenben:'【占位：结局9正文——填充区B】'},
   '10': {biaoqing:'🐕',mingcheng:'【占位：结局10-Puppy阴湿女鬼线分支——填充区B】',wenben:'【占位：结局10正文——填充区B】'}
@@ -692,26 +775,31 @@ function jisuanHuaiJilv(xingdongLeixing) {
 function huoquZuheHuaiJieguo(dx) {
   if (!dx || !dx.biaoqianLiebiao) return null;
   const yiJieshi = dx.biaoqianLiebiao.filter(b => !b.yincang);
-  // 统计各等级已揭示标签数
   const gaoweiShu = yiJieshi.filter(b => b.weixi >= 7).length;
   const zhongweiShu = yiJieshi.filter(b => b.weixi >= 4 && b.weixi <= 6).length;
-  // 根据最高等级决定组合池
-  let chi = null;
   let tidailv = 0;
-  if (gaoweiShu >= 1) { chi = 'gaowei'; tidailv = 0.7; }
-  else if (zhongweiShu >= 1) { chi = 'zhongwei'; tidailv = 0.5; }
-  else if (yiJieshi.length >= 3) { chi = 'diwei'; tidailv = 0.3; }
-  if (chi && Math.random() < tidailv) {
-    return suijiCongShuzu(BIAOQIAN_ZUHE_HUAI[chi]);
+  if (gaoweiShu >= 1) tidailv = 0.7;
+  else if (zhongweiShu >= 1) tidailv = 0.5;
+  else if (yiJieshi.length >= 3) tidailv = 0.3;
+  if (Math.random() < tidailv) {
+    return suijiCongShuzu(BIAOQIAN_ZUHE_HUAI);
   }
   return null;
 }
 
 /* ==================== 反馈显示 ==================== */
-function xianshiFankui(wenben, shifouHao) {
+function xianshiFankui(wenben, shifouHao, xingdongLeixing) {
   const wenbenEl = document.getElementById('fankui-wenben');
   wenbenEl.textContent = wenben;
   wenbenEl.className = 'fankui-wenben ' + (shifouHao ? 'fankui-wenben--hao' : 'fankui-wenben--huai');
+  // 显示行动标题
+  const biaotiEl = document.getElementById('fankui-biaoti');
+  if (xingdongLeixing && XINGDONG_SHUJU[xingdongLeixing]) {
+    biaotiEl.textContent = XINGDONG_SHUJU[xingdongLeixing].mingcheng;
+    biaotiEl.style.display = '';
+  } else {
+    biaotiEl.style.display = 'none';
+  }
   document.getElementById('mohei-fankui').style.display = 'flex';
 }
 
@@ -736,10 +824,8 @@ function xianshiJiemiTishi(wenben) {
   setTimeout(() => {
     yuanSu.classList.remove('xianshi');
     setTimeout(() => yuanSu.remove(), 300);
-  }, 1000);
+  }, 1500);
 }
-
-/* ==================== 奇遇提示 ==================== */
 function xianshiQiyuTishi(wenben, huiche) {
   return new Promise(resolve => {
     const yuanSu = document.createElement('div');
@@ -856,13 +942,12 @@ function chuliXingdong(leixing) {
     // 标签组合坏结果替换
     let jieguo = huoquZuheHuaiJieguo(ZHUANGTAI.dangqianDuixiang);
     if (!jieguo) jieguo = suijiCongShuzu(JIEGUO_SHUJU[leixing].huai);
-    xianshiFankui(jieguo, false);
-  } else {
+    xianshiFankui(jieguo, false, leixing);  } else {
     ZHUANGTAI.yayiya += xd.yaliBianhua;
     ZHUANGTAI.wending += xd.wendingBianhua;
     ZHUANGTAI.lianshuHuaiJieguo = 0;
     const jieguo = suijiCongShuzu(JIEGUO_SHUJU[leixing].hao);
-    xianshiFankui(jieguo, true);
+    xianshiFankui(jieguo, true, leixing);
   }
 
   ZHUANGTAI.yayiya = xianzhiFanwei(ZHUANGTAI.yayiya, 0, 100);
@@ -894,7 +979,7 @@ function chuliLiaotian() {
     const jiemiqu = yincangBiaoqian[0];
     jiemiqu.yincang = false;
     jiemiqu.weixi = jiemiqu.weixiZhen !== undefined ? jiemiqu.weixiZhen : jiemiqu.weixi;
-    xianshiJiemiTishi('揭示了隐藏标签：' + jiemiqu.wenzi);
+    xianshiJiemiTishi('解锁了新标签');
   } else {
     xianshiFankui('没有更多隐藏标签了', false);
   }
@@ -975,7 +1060,7 @@ function chuliKuitan() {
       bq.weixi = bq.weixiZhen !== undefined ? bq.weixiZhen : bq.weixi;
     }
   }
-  xianshiJiemiTishi('阴暗窥探揭示了一切……');
+  xianshiJiemiTishi('解锁了新标签');
   gengxinJiemian();
   setTimeout(() => {
     if (jianchaJiejue()) return;
@@ -1173,12 +1258,12 @@ async function kaiqiQiyu(quidingJuese) {
   gengxinJiemian();
   // puppy也需要显示提示
   if (xuanzhong === 'puppy') {
-    await xianshiQiyuTishi('咦，怎么不能挤眼了....', false);
+    xianshiJiemiTishi('咦，怎么不能挤眼了....');
     await xianshiQiyuTishi('那换人试试..？', true);
     return;
   }
   // 非puppy奇遇
-  await xianshiQiyuTishi('咦，怎么不能挤眼了....', false);
+  xianshiJiemiTishi('咦，怎么不能挤眼了....');
   await xianshiQiyuTishi('那换人试试..？', true);
   setTimeout(() => {
     document.getElementById('mohei-fuwucq').style.display = 'flex';
