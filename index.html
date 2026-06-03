@@ -194,8 +194,7 @@ body{background:#390919;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
         </div>
       </div>
       <div class="kaipian" id="kaipian-zhuti">
-        <button id="anniu-tiaoshi" onclick="chuliTiaoshi()" style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:3px 8px;font-size:10px;cursor:pointer;color:rgba(255,255,255,0.3);">DEBUG</button>
-        <button id="anniu-huanren" onclick="chuliHuanren()">💔 换一个</button>
+        <button id="anniu-tiaoshi" onclick="chuliTiaoshi()" style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:3px 8px;font-size:10px;cursor:pointer;color:rgba(255,255,255,0.3);">DEBUG</button>        <button id="anniu-huanren" onclick="chuliHuanren()">💔 换一个</button>
         <div class="kaipian-toubiao" id="kaipian-toubiao"><span id="toubiao-img">😊</span></div>
         <div class="kaipian-nicheng"><span id="nicheng-wenzi">加载中...</span></div>
         <div class="kaipian-qianming" id="kaipian-qianming"></div>
@@ -211,7 +210,7 @@ body{background:#390919;font-family:"PingFang SC","Microsoft YaHei","Hiragino Sa
       </div>
       <div class="gongjuhang" id="gongjuhang">
         <button class="anniu-xingdong" id="anniu-kuitan" onclick="chuliKuitan()">👁 阴暗窥探<span class="anniu-xiaozishu">解锁全部标签</span></button>
-        <button class="anniu-xingdong" id="anniu-kongchuang" onclick="chuliKongchuang()">🌱 空窗自我成长<span class="anniu-xiaozishu">更稳定，更压抑</span></button>
+        <button class="anniu-xingdong" id="anniu-kongchuang" onclick="chuliKongchuang()">🌱 空窗自我成长<span class="anniu-xiaozishu">压抑+5 稳定+4</span></button>
       </div>
     </div>
   </div>
@@ -288,7 +287,11 @@ const MINGZI_CHI_ZHONGWEN = [
   'NO BRA','急着下班','在逃牛马','不加微信','有点缺钱',
   '早干嘛去了','别喜欢我','深夜emo专用','爱SJ','镇混',
   '好女人不聊天','已读不回冠军','只要你主动','恋爱脑已切除','谈过3个都是直女',
-  '上一段还在还债','momo','已读不回是吧','ROSS值评','中药苦'
+  '上一段还在还债','momo','已读不回是吧','ROSS值评','中药苦',
+  '不约','拒T','反对早八','强推善竞','来这里玩玩',
+  '有对象的勿扰','张一宁','小酥鱼','你没事吧','卡学历',
+  '没有前任因为都跑路','原是我不配','意念回复','需要充电','不想谈别挤',
+  '养了三只猫','反同三个月','全网无前任','刚分手求安慰','省电状态'
 ];
 
 /* 表情池 */
@@ -300,7 +303,7 @@ const BIAOQING_CHI = [
   "💇‍♀️","🧑‍🎤","🦹‍♀️","🧝‍♀️"
 ];
 
-/* 标签池 v6.1 - risk: 风险等级, yincang: 是否隐藏标签, paizhe: 排他组 */
+/* 标签池 v6.3 - risk: 风险等级, yincang: 是否隐藏标签, paizhe: 排他组 */
 const BIAOQIAN_SHUJU = [
   // 低危标签 (risk 0-1)
   {wenzi:'长发T',weixi:0,paizhe:'waixing'},{wenzi:'短发T',weixi:0,paizhe:'waixing'},
@@ -375,11 +378,23 @@ const BIAOQIAN_SHUJU = [
   {wenzi:'ID中写着lovexxx',weixi:5,yincang:true,paizhe:'yincang_b'},
   {wenzi:'家里三个姐姐一个弟弟',weixi:4,yincang:true,paizhe:'yincang_c'},
   {wenzi:'列表关注了很多擦边男',weixi:7,yincang:true,paizhe:'yincang_d'},
-  {wenzi:'最后还是要结婚的',weixi:6,yincang:true,paizhe:'yincang_e'},
-  {wenzi:'幻想有基基',weixi:3,yincang:true,paizhe:'yincang_f'},
+  {wenzi:'最后还是要结婚的',weixi:7,yincang:true,paizhe:'yincang_e'},
+  {wenzi:'幻想有基基',weixi:7,yincang:true,paizhe:'yincang_f'},
   {wenzi:'电竞男粉丝',weixi:5,yincang:true,paizhe:'yincang_g'},
   {wenzi:'男rapper粉丝',weixi:5,yincang:true,paizhe:'yincang_h'},
-  {wenzi:'喜欢看教父',weixi:4,yincang:true,paizhe:'yincang_i'}
+  {wenzi:'喜欢看教父',weixi:4,yincang:true,paizhe:'yincang_i'},
+  // ⚡ v6.3 新增中危标签（直女/双性恋相关 + 其他）
+  {wenzi:'经常失踪',weixi:5,paizhe:''},{wenzi:'不做aftercare',weixi:6,paizhe:''},
+  {wenzi:'爱装',weixi:5,paizhe:''},{wenzi:'不爱洗澡',weixi:6,paizhe:''},{wenzi:'一毛不拔',weixi:5,paizhe:''},
+  {wenzi:'自我中心',weixi:4,paizhe:''},{wenzi:'喜欢AA',weixi:5,paizhe:''},{wenzi:'有白月光',weixi:5,paizhe:''},
+  {wenzi:'got a long ex-list',weixi:5,paizhe:''},{wenzi:'貌似有crush',weixi:4,paizhe:''},
+  // ⚡ v6.3 新增高危标签（直女/双性恋相关 + 其他）
+  {wenzi:'有暴力倾向',weixi:8,yincang:true,paizhe:''},{wenzi:'海王',weixi:8,yincang:true,paizhe:''},
+  {wenzi:'只做不谈',weixi:9,yincang:true,paizhe:''},{wenzi:'刚分手',weixi:7,yincang:true,paizhe:''},
+  {wenzi:'开放关系',weixi:8,yincang:true,paizhe:''},
+  {wenzi:'NPD',weixi:7,yincang:true,paizhe:''},{wenzi:'有三四个暧昧对象',weixi:8,yincang:true,paizhe:''},
+  {wenzi:'喜欢无缝衔接',weixi:8,yincang:true,paizhe:''},{wenzi:'列表2000人全是前任',weixi:9,yincang:true,paizhe:''},
+  {wenzi:'同时谈三个',weixi:9,yincang:true,paizhe:''}
 ];
 
 /* 签名池 */
@@ -388,7 +403,9 @@ const QIANMING_CHI = [
   '所有前任都说我是好人','只是来交朋友的（才怪）','文艺逼','别挤眼了直接说喜欢我会死吗',
   '一切仅供参考','冰岛无信号','下体为你燃烧','不需要被理解只需要被偏爱',
   '挤过眼就算老婆了吧？','我不是渣，我只是心碎成很多片分给不同的人','心选姐在哪','喜欢磕cp',
-  '爱磕卡黄，还磕泰西','手指很长，其他不知道','要么全部要么全不','V群招人？'
+  '爱磕卡黄，还磕泰西','再吵三根','要么全部要么全不','V群招人？',
+  '已读不回是因为不喜欢','也许礼貌回挤','姐妹快跑这不是避雷','有点厌世','刚分手求安慰别来沾边',
+  '有三只猫比我前任都靠谱','戒掉女同第N天','中药治不好','手机只剩1%电先聊到这','有腱鞘炎'
 ];
 
 /* 行动数据 */
@@ -399,7 +416,7 @@ const XINGDONG_SHUJU = {
   yuejiudian:{mingcheng:'🏩约酒店',   emoji:'🏩', yaliBianhua:-18,wendingBianhua:7,  huaiJilv:0.80}
 };
 
-/* 行动结果池 v2.1 */
+/* 行动结果池 v6.3 */
 const JIEGUO_SHUJU = {
   jiyan: {
     hao: [
@@ -409,71 +426,70 @@ const JIEGUO_SHUJU = {
       '什么也没有发生...',
       '勇敢地迈出了一步',
       '等待回挤的过程好煎熬...',
-      '早知道约她见面了',
+      '收到对方的挤眼了...',
       '她不仅回挤了，还看了你的主页',
       '你的手指在挤眼按钮上犹豫了三秒，但她秒回了',
-      '这一眼挤出去了，你感觉整个人都亮了'
+      '这一眼挤出去了，仿佛像拉出来一样爽快。'
     ],
     huai: [
       '哦吼...当晚没有等到后续....',
       '对方查看了你的主页但是没有回挤...',
-      '对方发来一句话：秒处，拒T',
+      '你因为肚脐眼不是竖的被卡了',
       '对方回挤了你，等待一夜之后收到她的消息：招拉吧营销。',
       '对方回挤了你，发来消息：撞号了哦',
       '对方回挤了你，再过几天你看她主页发现她已经绑了恋人',
-      '你觉得自己有点多余',
-      '早知道不挤眼了',
-      '她回挤了——回给了你旁边的那个人',
-      '你挤了眼，对方回了一句：你是T还是P？'
+      '没有回应...你觉得自己有点多余',
+      '没有回应...早知道不挤眼了',
+      '她回挤了——回给了你朋友',
+      '啊哦..你被卡学历了'
     ]
   },
   aime: {
     hao: [
-      '她回了你一句"你挺有意思的"，你的心跳快了一拍',
+      '她回了你一句"你长得很有魅力"',
       '暧昧的味道弥漫在空气中，两个人都不说破',
       '她发了张自拍给你，配文"看看我今天怎么样"',
       '你们聊到凌晨三点，谁都不想先说晚安',
       '她开始用你专属的昵称叫你了',
       '你发了一条暧昧的话，她回了三个点……但你注意到她在线到很晚',
-      '她说"你跟别人不太一样"，你信了',
+      '对方淡淡的，但是开始频繁访问你主页了',
       '你发现自己开始期待她的消息了',
-      '她问你是不是对每个人都这么暖，你说不是',
+      '她记住了你的食物偏好',
       '暧昧的第三天，她主动给你发了早安'
     ],
     huai: [
-      '她回了你一个"😂"，你的心凉了半截',
+      '她单走了一个"6"',
       '暧昧了三天，她突然换了情侣头像',
-      '她说"你是个好人"——你听到了死刑宣判',
-      '你暧昧了半天，发现她在跟另一个人暧昧',
+      '她说"你是个好人"——你听到了宣判',
+      '你暧昧了半天，发现她忽冷忽热',
       '她说"我最近不想谈恋爱"，第二天就官宣了',
       '她把你的暧昧当成了友情，还跟闺蜜分享了',
       '聊着聊着她说：你好像我前男友',
-      '暧昧到一半，她问你：你介不介意我有个男朋友',
+      '如果你是个男的我一定和你在一起',
       '她秒回了你，也秒回了另外三个人',
-      '你说想她，她说"别闹"——认真也不行？'
+      '你说喜欢她，她说那你很有眼光了'
     ]
   },
   yuejian: {
     hao: [
-      '她比照片好看，你比照片紧张',
+      '她比照片好看，你更紧张了',
       '见面那天她穿了你说过喜欢的颜色',
       '她说"终于见到你了"，语气比想象中温柔',
       '你们走了一下午，谁都没看手机',
-      '她帮你撑伞的时候，靠得比必要距离更近',
+      '她帮你撑伞的时候，无意间碰到了你的手',
       '见面比聊天轻松多了，也许你们真的合拍',
-      '她笑着说：下次还出来吗？你差点当场表白',
+      '她笑着说：下次还出来吗？',
       '她主动牵了你的手过马路，之后就没松开',
       '你迟到了十分钟，她已经帮你点好了你爱喝的',
-      '散场的时候她说"今天好开心"，你的心化了一半'
+      '散场的时候她说"下次换我请你"'
     ],
     huai: [
       '她带了闺蜜来，你成了电灯泡的灯泡',
       '见面三分钟，她说"我先走了"',
       '她全程在跟手机聊天，你怀疑是在跟别的女孩',
       '她说"你跟照片不太一样"——你也没P很过分吧',
-      '吃完饭AA制，她精确到了毛',
       '见面发现她就是你想躲的那种人',
-      '她说"我们还是做朋友吧"，请你吃了顿最便宜的饭',
+      '她说"我们还是做朋友吧"，请你吃了顿712',
       '她迟到了一小时，来的时候说"忘了，差点没来"',
       '见面才知道她以为你是来交朋友的',
       '她说你跟聊天时不太一样。废话，聊天有撤回功能'
@@ -481,26 +497,26 @@ const JIEGUO_SHUJU = {
   },
   yuejiudian: {
     hao: [
-      '那一晚，你什么都不怕了',
-      '她帮你吹头发的时候，你觉得什么都值了',
-      '你们聊了一整夜，到天亮也没觉得困',
+      '涩涩涩涩好涩涩好涩涩好',
+      '她帮你吹头发了',
+      '你们聊了一整夜原生家庭，到天亮也没觉得困',
       '她比你想象中温柔，也比想象中认真',
-      '第二天早上她还在，你没想过这个画面会这么安心',
-      '她说"下次还来找我"，语气像在说一件理所当然的事',
+      '第二天早上她给你做了早餐',
+      '她说"下次约电影"，语气像在说一件理所当然的事',
       '凌晨两点，你们在酒店天台上牵了手',
       '你赌对了，至少这一次',
       '她比你先醒来，盯着你看的样子像在确认你不是梦',
       '退房的时候她牵着你，好像全世界都跟你们无关'
     ],
     huai: [
-      '她凌晨三点走了，留下一句"我有点事"',
+      '她凌晨三点走了',
       '第二天早上她比你先走，连条消息都没有',
       '她把酒店照片发了朋友圈，配文是"姐妹聚会"——你不在照片里',
       '第二天她说"昨晚的事就当没发生过吧"',
-      '她的手指很好看，但心不在你身上',
+      '她做得很敷衍，心不在你身上',
       '酒店房间很安静，安静到你只能听见自己心碎的声音',
       '她说"谢谢你陪我"——谢谢，不是喜欢',
-      '你醒来发现她在收拾东西，她说"我先走了，改天聊"',
+      '你醒来发现她在收拾东西，她说"你的那杯13"',
       '那一晚很美好，第二天她就把你删了',
       '她走的时候亲了你一下，然后再也没有回过消息'
     ]
@@ -514,8 +530,8 @@ const JIEGUO_SHUJU_GAO_WEIXI = {
     '你挤了眼，她截图发到了闺蜜群里嘲笑'
   ],
   aime_huai_zhong: [
-    '暧昧了一周，你发现她是来找室友的不是找对象的',
-    '她说"你很适合当我闺蜜"——闺蜜，永远的闺蜜'
+    '暧昧了一周，你发现她是来找室友AA房租的',
+    '她说"你很适合当我闺蜜"'
   ],
   yuejian_huai_zhong: [
     '她带了男朋友来，说"你们可以交个朋友"',
@@ -532,21 +548,18 @@ const BIAOQIAN_ZUHE_HUAI = [
   '她比你还需要被照顾，这段关系还没开始你就已经累了',
   '她约会只会约在酒吧，你连清醒地被拒绝的机会都没有',
   '海王实锤，你就是她鱼塘里最新的一条鱼',
-  '她最终会回归主流，而你只是她青春里的一段插曲',
-  '她不是你的姐妹，她是你兄弟',
-  '她把每个前任都刻在身上，但最后嫁的不会是你',
+  '她最终会回归婚姻，而你只是她青春里的一段插曲',,
+  '她把每个前任都刻在身上，你是新的那个',
   '她随身带指套但不爱洗手……这画面你自己想',
   '她的ID就是她的简历，你不信邪也没办法',
-  '她叫谁都兄弟，但她幻想的跟你完全不是一回事',
-  '天蝎的占有欲配上一句"我还是要结婚的"，毒上加毒'
 ];
 
 /* 结局数据 v2.1 */
 const JIEJUE_SHUJU = {
   '1a': {biaoqing:'❤️',mingcheng:'稳定的爱人能力',wenben:'多个无眠的夜晚，在一次次试炼中，你终于明白了爱人的不易……恭喜你，解锁稳定的爱人能力'},
   '1b': {biaoqing:'🤍',mingcheng:'稳定的爱己能力',wenben:'终于，你知道了自己的心在哪个季节。恭喜你学会了如何爱自己，无论是单身还是恋爱，你都完整了自己。'},
-  '2':  {biaoqing:'🔥',mingcheng:'想爱就爱',wenben:'见一个爱一个，挤眼挤到眼睛痉挛是你的归属……被几个女人一起伤害总比被同一个女人伤害好，你说是吧？'},
-  '3':  {biaoqing:'🖤',mingcheng:'女同性恨',wenben:'伤害我吗？没关系，这下我也能诅咒你再也不会幸福了。'},
+  '2':  {biaoqing:'🔥',mingcheng:'想爱就爱',wenben:'压抑值爆表了...你开始见一个爱一个。挤眼挤到眼睛痉挛是你的归属……被几个女人一起伤害总比被同一个女人伤害好，你说是吧？'},
+  '3':  {biaoqing:'🖤',mingcheng:'女同性恨',wenben:'伤害我吗？没关系，这下我终于能诅咒你再也不会幸福了。'},
   '4':  {biaoqing:'🤪',mingcheng:'谁还不会发疯了',wenben:'到底在爱来爱去爱什么啊……人类配被我爱吗，今天开始我再也不要爱姐了。妹妹我来了'},
   '5':  {biaoqing:'💔',mingcheng:'你以为你是救世主？',wenben:'你试着走进她的世界，但你忘了——你自己的世界也是千疮百孔。\n\n她不需要你拯救，她需要的从来不是你。\n你以为你在发光，其实你只是在自焚。\n\n你没能救她，也没能救自己。\n但至少你试过了。\n\n……试过了，有用吗？'},
   '6':  {biaoqing:'💞',mingcheng:'直到死亡把我们分开',wenben:'她问过你："你为什么会选择我？"\n你说："因为你在这里。"\n\n两个破碎的人拼在一起，也许就是完整的。\n她不会再消失了，因为你也不会走。\n\n那个蓝色头发的女孩，终于不用再一个人等了。\n而你，终于有一个值得留下来的理由。'},
@@ -556,7 +569,7 @@ const JIEJUE_SHUJU = {
   '10': {biaoqing:'🐕',mingcheng:'【占位：结局10-Puppy阴湿女鬼线分支——填充区B】',wenben:'【占位：结局10正文——填充区B】'}
 };
 
-/* 对话树 v6.1 */
+/* 对话树 v6.3 */
 const DUIHUA_SHU = {
   chloe: {
     toubiao:'🦋',nicheng:'Chloe',xianshiWeixi:3,
@@ -684,11 +697,24 @@ function chongzhiZhuangtai() {
     wanchengHuihe: 0,
     puppyHuanrenCishu: 0,
     lianshuHuaiJieguo: 0,
-    jiyanCishu: 0
+    jiyanCishu: 0,
+    gCharacterAppeared: false
   };
 }
 
 /* ==================== 工具函数 ==================== */
+/* G 固定角色数据 v6.3 */
+const G_CHAR = {
+  nicheng: 'G',
+  qianming: '寻找余生伴侣',
+  toubiao: '🌝',
+  biaoqianLiebiao: [
+    {wenzi:'光头', weixi:0, yincang:false},
+    {wenzi:'爱喝爆浆咖啡', weixi:0, yincang:false},
+    {wenzi:'有大别墅', weixi:0, yincang:false}
+  ],
+  isG: true
+};
 function suijishu(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -699,9 +725,15 @@ function xianzhiFanwei(val, min, max) {
   return Math.max(min, Math.min(max, val));
 }
 
-/* ==================== 对象生成 v6.1（互斥组） ==================== */
+/* ==================== 对象生成 v6.3（互斥组 + 多样性控制） ==================== */
 function shengchengDuixiang(preshaped) {
   if (preshaped) return preshaped;
+  // ⚡ v6.3: G 固定角色 10% 概率出现，整局仅一次
+  if (!ZHUANGTAI.gCharacterAppeared && Math.random() < 0.1) {
+    ZHUANGTAI.gCharacterAppeared = true;
+    const g = JSON.parse(JSON.stringify(G_CHAR));
+    return g;
+  }
   const dx = {};
   dx.toubiao = suijiCongShuzu(BIAOQING_CHI);
   dx.nicheng = suijiCongShuzu(MINGZI_CHI_ZHONGWEN);
@@ -759,18 +791,57 @@ function shengchengDuixiang(preshaped) {
     yixuanWenzi.add(t.wenzi);
   }
 
+  // ⚡ v6.3: 标签多样性控制 — 减少纯低危对象的随机出现
+  const kejianBiaoqian = dx.biaoqianLiebiao.filter(b => !b.yincang);
+  const quandiwei = kejianBiaoqian.length > 0 && kejianBiaoqian.every(b => b.weixi <= 3);
+  if (quandiwei && Math.random() < 0.6) {
+    // 60%概率强制追加一个中危或高危标签
+    const zhongGaoweiChi = BIAOQIAN_SHUJU.filter(b => !b.yincang && b.weixi >= 4 && !yixuanWenzi.has(b.wenzi));
+    if (zhongGaoweiChi.length > 0) {
+      const tianjiaBiaoqian = suijiCongShuzu(zhongGaoweiChi);
+      dx.biaoqianLiebiao.push({wenzi: tianjiaBiaoqian.wenzi, weixi: tianjiaBiaoqian.weixi, yincang: false});
+      yixuanWenzi.add(tianjiaBiaoqian.wenzi);
+      // 若总数超5，随机剔除一个原有低危标签
+      if (dx.biaoqianLiebiao.length > 5) {
+        const diweiSuoyin = [];
+        for (let i = 0; i < dx.biaoqianLiebiao.length; i++) {
+          if (!dx.biaoqianLiebiao[i].yincang && dx.biaoqianLiebiao[i].weixi <= 3) {
+            diweiSuoyin.push(i);
+          }
+        }
+        if (diweiSuoyin.length > 0) {
+          dx.biaoqianLiebiao.splice(diweiSuoyin[Math.floor(Math.random() * diweiSuoyin.length)], 1);
+        }
+      }
+    }
+  }
+
   dx.shifouBianhua = false;
   return dx;
 }
 
-/* ==================== 坏结果计算 v6.1 ==================== */
+/* ==================== 坏结果计算 v6.3 ==================== */
 function jisuanHuaiJilv(xingdongLeixing) {
   let jilv = XINGDONG_SHUJU[xingdongLeixing].huaiJilv;
   const dx = ZHUANGTAI.dangqianDuixiang;
   if (dx && dx.biaoqianLiebiao) {
-    // 检查已揭示的高危标签（risk >= 7）
+    // 检查已揭示的高危标签（risk >= 7）→ 坏率×1.5
     const youGaoweiji = dx.biaoqianLiebiao.some(b => !b.yincang && b.weixi >= 7);
     if (youGaoweiji) jilv *= 1.5;
+    
+    // ⚡ v6.3: 低危标签奖励 — 好对象应该更安全
+    const yijieshi = dx.biaoqianLiebiao.filter(b => !b.yincang);
+    if (yijieshi.length > 0) {
+      const quandiwei = yijieshi.every(b => b.weixi <= 3);
+      if (quandiwei) {
+        jilv *= 0.6;  // 全低危：坏结果概率打6折
+      } else {
+        const daduodiweiShu = yijieshi.filter(b => b.weixi <= 3).length;
+        if (daduodiweiShu >= Math.ceil(yijieshi.length * 0.7)) {
+          jilv *= 0.8;  // ≥70%低危：打8折
+        }
+      }
+    }
   }
   return Math.min(jilv, 0.99);
 }
@@ -928,13 +999,41 @@ function gengxinKaipian() {
   }
 }
 
-/* ==================== 行动处理 v6.1 ==================== */
+/* ==================== 行动处理 v6.3 ==================== */
 function chuliXingdong(leixing) {
   if (ZHUANGTAI.youxiJieshu) return;
-  // 先结算被动+5压力（每回合开始时的被动效果在此体现）
-  ZHUANGTAI.yayiya += 5;
+  // ⚡ v6.3: 被动压力 +5→+3（缓解压抑值爆表问题）
+  ZHUANGTAI.yayiya += 3;
   ZHUANGTAI.yayiya = xianzhiFanwei(ZHUANGTAI.yayiya, 0, 100);
   const xd = XINGDONG_SHUJU[leixing];
+  // ⚡ v6.3: G 固定角色：所有行动均为坏结局，使用固定文案
+  if (ZHUANGTAI.dangqianDuixiang && ZHUANGTAI.dangqianDuixiang.isG) {
+    ZHUANGTAI.yayiya -= xd.yaliBianhua;
+    ZHUANGTAI.wending -= xd.wendingBianhua;
+    ZHUANGTAI.lianshuHuaiJieguo++;
+    let gWenben = '';
+    if (leixing === 'jiyan') {
+      gWenben = '尴尬的是对方没有回挤你，还发了条新动态，手机来源变成了施华洛奇iPhone18';
+    } else if (leixing === 'aime') {
+      gWenben = '对方给你发来一条信息：谢谢你的喜欢，V我501可进群';
+    } else if (leixing === 'yuejian') {
+      gWenben = '对方发来一条消息：我很忙，在等快递员上门，下次吧';
+    } else if (leixing === 'yuejiudian') {
+      gWenben = '洞房花烛夜...老娘现在没有很稀罕';
+    }
+    xianshiFankui(gWenben, false, leixing);
+    ZHUANGTAI.yayiya = xianzhiFanwei(ZHUANGTAI.yayiya, 0, 100);
+    ZHUANGTAI.wending = xianzhiFanwei(ZHUANGTAI.wending, 0, 100);
+    ZHUANGTAI.xingdongJishu[leixing]++;
+    ZHUANGTAI.lixiangXiangwaiCi++;
+    if (leixing === 'jiyan') ZHUANGTAI.jiyanCishu++;
+    gengxinJiemian();
+    ZHUANGTAI._fankuiHuiche = function() {
+      if (jianchaJiejue()) return;
+      jinruXiaYiHuiche();
+    };
+    return;
+  }
   // 坏结果判定
   const huaiJilv = jisuanHuaiJilv(leixing);
   const shifouHuai = Math.random() < huaiJilv;
@@ -994,13 +1093,13 @@ function chuliLiaotian() {
 
 function chuliHuanren() {
   if (ZHUANGTAI.youxiJieshu) return;
-  // 奇遇模式下puppy的特殊点击机制
+  // 奇遇模式下puppy的特殊点击机制（⚡ v6.3: 2次点击触发文本变动）
   if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy') {
     ZHUANGTAI.puppyHuanrenCishu = (ZHUANGTAI.puppyHuanrenCishu || 0) + 1;
-    // 玩家已点击，移除心跳高亮
-    DOM.huanren.classList.remove('xintiao');
+    // 第1次点击：心跳高亮保持，引导玩家再点一次
+    // 第2次点击：移除心跳（在 guanbiFuwuCuo 中触发文本变动后移除）
     if (ZHUANGTAI.puppyHuanrenCishu <= 2) {
-      // 显示服务器错误弹窗（前2次）
+      // 显示服务器错误弹窗
       document.getElementById('fuwucq-biaoti').textContent = '😵 服务器开小差了';
       document.getElementById('fuwucq-neirong').textContent = '啊哦...服务器开小差了，请重新尝试换人吧！';
       document.getElementById('fuwucu-queding').textContent = '好的';
@@ -1036,7 +1135,7 @@ function chuliKongchuang() {
   if (ZHUANGTAI.youxiJieshu || ZHUANGTAI.kongchuangYongguo) return;
   ZHUANGTAI.kongchuangYongguo = true;
   ZHUANGTAI.yayiya += 5;
-  ZHUANGTAI.wending += 6;
+  ZHUANGTAI.wending += 4;  // ⚡ v6.3: +6→+4，配合被动衰减防止稳定值过快满100
   ZHUANGTAI.yayiya = xianzhiFanwei(ZHUANGTAI.yayiya, 0, 100);
   ZHUANGTAI.wending = xianzhiFanwei(ZHUANGTAI.wending, 0, 100);
   ZHUANGTAI.xingdongJishu.kongchuang++;
@@ -1076,7 +1175,7 @@ function chuliKuitan() {
 }
 
 function guanbiFuwuCuo() {
-  // puppy第2次点击：弹窗内文案变化
+  // ⚡ v6.3: puppy第2次点击（puppyHuanrenCishu===2）触发文本变动
   if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy' && ZHUANGTAI.puppyHuanrenCishu === 2) {
     const neirongEl = document.getElementById('fuwucq-neirong');
     const btnEl = document.getElementById('fuwucu-queding');
@@ -1098,8 +1197,9 @@ function guanbiFuwuCuo() {
           // 按钮从"好的"变成"留下"
           btnEl.textContent = '留下';
           btnEl.onclick = function() {
-            // 点击"留下"：关闭弹窗，1秒后开始puppy对话
+            // 点击"留下"：关闭弹窗→移除心跳高亮→1秒后开始puppy对话
             document.getElementById('mohei-fuwucq').style.display = 'none';
+            DOM.huanren.classList.remove('xintiao');  // ⚡ v6.3: 第2次点击触发后移除心跳
             setTimeout(() => {
               duihuaXianshi('puppy', 'puppy-a');
             }, 1000);
@@ -1130,13 +1230,26 @@ function chuliTiaoshi() {
   // 直接调用kaiqiQiyu，传入puppy参数
   kaiqiQiyu('puppy');
 }
+/* ==================== DEBUG-G 按钮 ==================== */
+function chuliTiaoshiG() {
+  if (ZHUANGTAI.youxiJieshu) return;
+  // 强制生成G固定角色
+  ZHUANGTAI.gCharacterAppeared = true;
+  var g = JSON.parse(JSON.stringify(G_CHAR));
+  ZHUANGTAI.dangqianDuixiang = g;
+  gengxinJiemian();
+  // 提示
+  alert('【DEBUG】已强制刷新为G固定角色！\n昵称：G\n签名：寻找余生伴侣\n头像：🌝\n标签：光头 / 爱喝爆浆咖啡 / 有大别墅\n所有行动均为固定坏结局！');
+}
 
 /* ==================== 回合推进 ==================== */
 function jinruXiaYiHuihe() {
   ZHUANGTAI.wanchengHuihe = ZHUANGTAI.huichi;
   ZHUANGTAI.huichi++;
   ZHUANGTAI.liaotianYongguoBenHuihe = false;
-  // 被动+5已在chuliXingdong中处理，此处不再重复
+  // ⚡ v6.3: 每回合稳定值被动-1（情绪自然漂移，防止稳定值轻易满100）
+  ZHUANGTAI.wending = xianzhiFanwei(ZHUANGTAI.wending - 1, 0, 100);
+  // 被动+3已在chuliXingdong中处理
   // 检查奇遇触发
   if (ZHUANGTAI.huichi >= 20 && ZHUANGTAI.qiYuMode && !ZHUANGTAI.qiYuKaiqi) {
     kaiqiQiyu();
@@ -1160,7 +1273,7 @@ function jinruXiaYiHuihe() {
   gengxinJiemian();
 }
 
-/* ==================== 结局检查 v6.1 ==================== */
+/* ==================== 结局检查 v6.3 ==================== */
 function jianchaJiejue() {
   // 结局1a: 稳定值 >= 80 且 压抑值 <= 40, 存活回合 >= 15
   if (ZHUANGTAI.wending >= 80 && ZHUANGTAI.yayiya <= 40 && ZHUANGTAI.wanchengHuihe >= 15) {
@@ -1216,7 +1329,7 @@ function jieshuYouxi(jiejueBianhao) {
   document.getElementById('jiejue-wenben').textContent = jd.wenben;
 }
 
-/* ==================== 奇遇模式 v6.1 ==================== */
+/* ==================== 奇遇模式 v6.3 ==================== */
 async function kaiqiQiyu(quidingJuese) {
   ZHUANGTAI.qiYuKaiqi = true;
   ZHUANGTAI.puppyHuanrenCishu = 0;
@@ -1289,7 +1402,7 @@ async function kaiqiQiyu(quidingJuese) {
   }, 800);
 }
 
-/* ==================== 对话系统 v6.1 ==================== */
+/* ==================== 对话系统 v6.3 ==================== */
 async function duihuaXianshi(jueseLeixing, shouJiedian) {
   const shuju = DUIHUA_SHU[jueseLeixing];
   ZHUANGTAI.duihuaJuese = jueseLeixing;
