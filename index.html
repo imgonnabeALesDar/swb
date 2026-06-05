@@ -796,6 +796,8 @@ function chongzhiZhuangtai() {
     lianshuHuaiJieguo: 0,
     jiyanCishu: 0,
     gCharacterAppeared: false,
+    qiyuLianxuTong: 0,  // ⚡ 保底：奇遇连续同角色计数，≥2时强制切换
+    qiyuShangci: null,   // ⚡ 保底：上一次奇遇角色
     // ⚡ v7.0: 回合结果记录，用于复盘
     huiheJilu: [],   // {huihe, xingdong, shifouHao}
     // ⚡ v6.5: 对象生成平滑 — 追踪上一对象危险值，防连续同类
@@ -1543,14 +1545,16 @@ function chuliTiaoshiEX() {
 
 /* ==================== 回合推进 ==================== */
 function jinruXiaYiHuihe() {
-  ZHUANGTAI.wanchengHuihe = ZHUANGTAI.huichi;
-  ZHUANGTAI.huichi++;
-  // ⚡ v6.5: 移除每回合被动稳定下降（取消被动压抑机制）
-  // 检查奇遇触发
-  if (ZHUANGTAI.huichi >= 15 && ZHUANGTAI.qiYuMode && !ZHUANGTAI.qiYuKaiqi) {
+  // ⚡ fix: 先检查奇遇，再推进回合
+  // 当玩家已完成第14回合（huichi===14）时触发奇遇，让奇遇作为第15回合的内容
+  if (ZHUANGTAI.huichi >= 14 && ZHUANGTAI.qiYuMode && !ZHUANGTAI.qiYuKaiqi) {
+    ZHUANGTAI.wanchengHuihe = ZHUANGTAI.huichi;
+    ZHUANGTAI.huichi = 15;
     kaiqiQiyu();
     return;
   }
+  ZHUANGTAI.wanchengHuihe = ZHUANGTAI.huichi;
+  ZHUANGTAI.huichi++;
   // 换人时已生成新对象，跳过重复生成
   if (ZHUANGTAI._huanrenGengxin) {
     ZHUANGTAI._huanrenGengxin = false;
@@ -1672,7 +1676,26 @@ async function kaiqiQiyu(quidingJuese) {
     });
   }
   // 选择角色（chole 暂未上线，仅 ex / puppy 二选一）
-  const xuanzhong = quidingJuese || (Math.random() < 0.4 ? 'ex' : 'puppy');
+  // ⚡ 保底：连续2次同角色后强制切换，杜绝3连同一角色
+  let xuanzhong;
+  if (quidingJuese) {
+    xuanzhong = quidingJuese;
+  } else {
+    const suiji = Math.random() < 0.4 ? 'ex' : 'puppy';
+    if (ZHUANGTAI.qiyuLianxuTong >= 2) {
+      // 保底：强制走上次以外的角色
+      xuanzhong = ZHUANGTAI.qiyuShangci === 'ex' ? 'puppy' : 'ex';
+      ZHUANGTAI.qiyuLianxuTong = 0;
+    } else {
+      xuanzhong = suiji;
+      if (xuanzhong === ZHUANGTAI.qiyuShangci) {
+        ZHUANGTAI.qiyuLianxuTong++;
+      } else {
+        ZHUANGTAI.qiyuLianxuTong = 1;
+      }
+    }
+    ZHUANGTAI.qiyuShangci = xuanzhong;
+  }
   ZHUANGTAI.duihuaJuese = xuanzhong;
 
   // ⚡ v7.3 P0-8/P0-9: 公共 — 进入奇遇模式 UI 改造（隐藏 checkbox + 文案高亮）
