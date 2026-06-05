@@ -366,27 +366,29 @@ const BIAOQING_CHI = [
 
 /* 标签池 v6.3 - risk: 风险等级, yincang: 是否隐藏标签, paizhe: 排他组 */
 const BIAOQIAN_SHUJU = [
-  // 低危标签 (risk 0-1)
+  // 属性类
   {wenzi:'长发T',weixi:0,paizhe:'waixing'},{wenzi:'短发T',weixi:0,paizhe:'waixing'},
   {wenzi:'长发P',weixi:0,paizhe:'waixing'},{wenzi:'短发P',weixi:0,paizhe:'waixing'},
   {wenzi:'TTL',weixi:0,paizhe:'waixing'},{wenzi:'PPL',weixi:0,paizhe:'waixing'},
   {wenzi:'只喜欢长发',weixi:0,paizhe:'waixing'},{wenzi:'婉拒短发T',weixi:0,paizhe:'waixing'},
   {wenzi:'爷T',weixi:0,paizhe:'waixing'},{wenzi:'180cm',weixi:0,paizhe:'waixing'},
-  {wenzi:'喜欢瘦子',weixi:0,paizhe:'waixing'},{wenzi:'喜欢姐姐',weixi:0,paizhe:'waixing'},
-  {wenzi:'妹控',weixi:0,paizhe:'waixing'},{wenzi:'找妈妈',weixi:0,paizhe:'waixing'},
-  {wenzi:'纯情小狗',weixi:0,paizhe:'waixing'},{wenzi:'找狗',weixi:0,paizhe:'waixing'},
-  {wenzi:'手指长',weixi:0,paizhe:'waixing'},{wenzi:'手指开发程度不足1%',weixi:0,paizhe:'waixing'},
-  {wenzi:'手指细长',weixi:0,paizhe:'waixing'},
+  {wenzi:'0.5',weixi:0,paizhe:'waixing'},{wenzi:'H',weixi:0,paizhe:'waixing'},
+  {wenzi:'不分TP',weixi:0,paizhe:'waixing'},{wenzi:'纯1',weixi:0,paizhe:'qinggan'},
+  {wenzi:'纯0',weixi:0,paizhe:'qinggan'},
   // 兴趣类
   {wenzi:'喜欢涩涩',weixi:0,paizhe:'aihao'},{wenzi:'游戏爱好者',weixi:0,paizhe:'aihao'},
-  {wenzi:'学生',weixi:0,paizhe:'aihao'},{wenzi:'K-POP',weixi:0,paizhe:'aihao'},
+  {wenzi:'学生',weixi:0,paizhe:'zhiye'},{wenzi:'K-POP',weixi:0,paizhe:'aihao'},
   {wenzi:'J-POP',weixi:0,paizhe:'aihao'},{wenzi:'内娱粉',weixi:0,paizhe:'aihao'},
   {wenzi:'女团博爱',weixi:0,paizhe:'aihao'},{wenzi:'爱吃辣',weixi:0,paizhe:'aihao'},
   {wenzi:'不吃香菜',weixi:0,paizhe:'aihao'},{wenzi:'香菜是神',weixi:0,paizhe:'aihao'},
   {wenzi:'最强王者',weixi:0,paizhe:'aihao'},{wenzi:'塔罗牌',weixi:0,paizhe:'aihao'},
   {wenzi:'爱旅游',weixi:0,paizhe:'aihao'},{wenzi:'抽烟',weixi:0,paizhe:'aihao'},
   {wenzi:'婉拒抽烟',weixi:0,paizhe:'aihao'},{wenzi:'爱喝酒',weixi:0,paizhe:'aihao'},
-  {wenzi:'对口音有雷点',weixi:0,paizhe:'aihao'},
+  {wenzi:'对口音有雷点',weixi:0,paizhe:'aihao'},{wenzi:'手指细长',weixi:0,paizhe:'waixing'},
+  {wenzi:'手指长',weixi:0,paizhe:'waixing'},{wenzi:'手指开发程度不足1%',weixi:0,paizhe:'waixing'},
+  {wenzi:'喜欢瘦子',weixi:0,paizhe:'waixing'},{wenzi:'喜欢姐姐',weixi:0,paizhe:'waixing'},
+  {wenzi:'妹控',weixi:0,paizhe:'waixing'},{wenzi:'找妈妈',weixi:0,paizhe:'waixing'},
+  {wenzi:'纯情小狗',weixi:0,paizhe:'waixing'},{wenzi:'找狗',weixi:0,paizhe:'waixing'},
   // 追星类
   {wenzi:'柳智敏女五一',weixi:0,paizhe:'xingge'},{wenzi:'张元英女五一',weixi:0,paizhe:'xingge'},
   {wenzi:'安宥真女五一',weixi:0,paizhe:'xingge'},{wenzi:'njz五女一',weixi:0,paizhe:'xingge'},
@@ -395,11 +397,9 @@ const BIAOQIAN_SHUJU = [
   {wenzi:'爱狗人士',weixi:0,paizhe:'chongwu'},{wenzi:'爱猫人士',weixi:0,paizhe:'chongwu'},
   // 情感倾向
   {wenzi:'恋姐',weixi:1,paizhe:'qingganA'},{wenzi:'恋妹',weixi:1,paizhe:'qingganA'},
-  {wenzi:'恋妈',weixi:1,paizhe:'qinggan'},{wenzi:'母胎solo',weixi:0,paizhe:'qinggan'},
+  {wenzi:'母胎solo',weixi:0,paizhe:'qinggan'},{wenzi:'柏拉图',weixi:0,paizhe:'qinggan'},
   {wenzi:'双性恋',weixi:0,paizhe:'qinggan'},{wenzi:'泛性恋',weixi:0,paizhe:'qinggan'},
-  {wenzi:'无性恋',weixi:0,paizhe:'qinggan'},{wenzi:'柏拉图',weixi:0,paizhe:'qinggan'},
-  {wenzi:'跨性别',weixi:0,paizhe:'qinggan'},{wenzi:'纯1',weixi:0,paizhe:'qinggan'},
-  {wenzi:'纯0',weixi:0,paizhe:'qinggan'},{wenzi:'TP不分',weixi:0,paizhe:'qinggan'},
+  {wenzi:'无性恋',weixi:0,paizhe:'qinggan'},
   // MBTI 互斥组
   {wenzi:'ENTJ',weixi:0,paizhe:'mbti'},{wenzi:'INTJ',weixi:0,paizhe:'mbti'},
   {wenzi:'ENTP',weixi:0,paizhe:'mbti'},{wenzi:'ENFP',weixi:0,paizhe:'mbti'},
@@ -831,7 +831,7 @@ function xianzhiFanwei(val, min, max) {
 /* ==================== 对象生成 v6.3（互斥组 + 多样性控制） ==================== */
 function shengchengDuixiang(preshaped) {
   if (preshaped) return preshaped;
-  // ⚡ v6.3: G 固定角色 5% 概率出现，整局仅一次
+  // ⚡ P1-4: G 固定角色 5% 概率出现，整局仅一次
   if (!ZHUANGTAI.gCharacterAppeared && Math.random() < 0.05) {
     ZHUANGTAI.gCharacterAppeared = true;
     const g = JSON.parse(JSON.stringify(G_CHAR));
@@ -845,8 +845,12 @@ function shengchengDuixiang(preshaped) {
   const yixuanze = new Set();
   const yixuanWenzi = new Set();
 
-  // 互斥组 - 每组40%几率激活
+  // ⚡ P0-5: 完整互斥组 — 每组40%几率激活，组内只选1个
+  // 属性类(waixing)内部互斥、追星类(xingge)内部互斥、MBTI内部互斥、星座内部互斥、
+  // 职业组(zhiye)内部互斥、嗓音组(sangyin)内部互斥、情感A(qingganA)内部互斥
   const huchiZu = {
+    waixing: BIAOQIAN_SHUJU.filter(b => b.paizhe === 'waixing').map(b => b.wenzi),
+    xingge: BIAOQIAN_SHUJU.filter(b => b.paizhe === 'xingge').map(b => b.wenzi),
     qingganA: ['恋姐','恋妹'],
     mbti: BIAOQIAN_SHUJU.filter(b => b.paizhe === 'mbti').map(b => b.wenzi),
     xingzuo: BIAOQIAN_SHUJU.filter(b => b.paizhe === 'xingzuo').map(b => b.wenzi),
@@ -854,12 +858,33 @@ function shengchengDuixiang(preshaped) {
     sangyin: BIAOQIAN_SHUJU.filter(b => b.paizhe === 'sangyin').map(b => b.wenzi)
   };
 
+  // ⚡ P0-5: 跨组互斥对 — 任一标签被选中后，互斥标签不可再出现
+  // 抽烟 ↔ 婉拒抽烟，找妈妈 ↔ 找狗，找狗 ↔ 纯情小狗
+  // 婉拒信MBTI的 ↔ 整个MBTI组，避雷信星座的 ↔ 整个星座组
+  const kuazuHuchi = [
+    {a:'抽烟', b:'婉拒抽烟'},
+    {a:'找妈妈', b:'找狗'},
+    {a:'找狗', b:'纯情小狗'},
+    {a:'婉拒信MBTI的', bZu:'mbti'},
+    {a:'避雷信星座的', bZu:'xingzuo'}
+  ];
+
   const yongguoZuhe = new Set();
   for (const [zuMing, zuList] of Object.entries(huchiZu)) {
     if (Math.random() < 0.4) {
-      const xuanzhong = zuList[Math.floor(Math.random() * zuList.length)];
-      // 职业组特殊检查：若已选学生则跳过
-      if (zuMing === 'zhiye' && yixuanWenzi.has('学生')) continue;
+      // ⚡ P0-5: 过滤掉被跨组互斥排除的标签
+      const kexuanList = zuList.filter(wenzi => {
+        for (const guize of kuazuHuchi) {
+          // 如果已选了某个标签，且该标签的互斥方属于当前组，则排除
+          if (guize.bZu === zuMing && yixuanWenzi.has(guize.a)) return false;
+          // 如果当前标签和已选的某个标签互斥
+          if (guize.a === wenzi && yixuanWenzi.has(guize.b)) return false;
+          if (guize.b === wenzi && yixuanWenzi.has(guize.a)) return false;
+        }
+        return true;
+      });
+      if (kexuanList.length === 0) continue;
+      const xuanzhong = kexuanList[Math.floor(Math.random() * kexuanList.length)];
       const shuju = BIAOQIAN_SHUJU.find(b => b.wenzi === xuanzhong);
       if (shuju && !yixuanWenzi.has(xuanzhong)) {
         dx.biaoqianLiebiao.push({wenzi: shuju.wenzi, weixi: shuju.weixi, yincang: !!shuju.yincang});
@@ -869,6 +894,11 @@ function shengchengDuixiang(preshaped) {
     }
   }
 
+  // ⚡ P0-5: 互斥标签组名集合（非兴趣类/宠物/情感倾向的组都是互斥组）
+  const huchiZuMing = new Set(Object.keys(huchiZu));
+  // 兴趣类(aihao)内部不互斥，宠物(chongwu)不互斥，情感倾向(qinggan)不互斥
+  const buHuchiZu = new Set(['aihao', 'chongwu', 'qinggan']);
+
   // 非互斥标签：随机填充到3-5个可见标签
   const muBiaoZongshu = suijishu(3, 5);
   const guolvWeixi = BIAOQIAN_SHUJU.filter(b => !b.yincang && !yixuanWenzi.has(b.wenzi));
@@ -877,9 +907,23 @@ function shengchengDuixiang(preshaped) {
   for (const biaoqian of daxue) {
     if (dx.biaoqianLiebiao.filter(b => !b.yincang).length >= muBiaoZongshu) break;
     if (yixuanWenzi.has(biaoqian.wenzi)) continue;
+    // ⚡ P0-5: 互斥组检查 — 该标签的paizhe组如果已有标签被选中，跳过
+    if (biaoqian.paizhe && huchiZuMing.has(biaoqian.paizhe) && yongguoZuhe.has(biaoqian.paizhe)) continue;
+    // ⚡ P0-5: 跨组互斥检查
+    let beiHuchi = false;
+    for (const guize of kuazuHuchi) {
+      if (guize.a === biaoqian.wenzi && yixuanWenzi.has(guize.b)) { beiHuchi = true; break; }
+      if (guize.b === biaoqian.wenzi && yixuanWenzi.has(guize.a)) { beiHuchi = true; break; }
+      if (guize.a === biaoqian.wenzi && guize.bZu && yongguoZuhe.has(guize.bZu)) { beiHuchi = true; break; }
+      // 婉拒信MBTI的/避雷信星座的 — 如果MBTI/星座组已激活，排除这些标签
+      if (guize.bZu === biaoqian.paizhe && yixuanWenzi.has(guize.a)) { beiHuchi = true; break; }
+    }
+    if (beiHuchi) continue;
     dx.biaoqianLiebiao.push({wenzi: biaoqian.wenzi, weixi: biaoqian.weixi, yincang: false});
     yixuanWenzi.add(biaoqian.wenzi);
     yixuanze.add(biaoqian.paizhe);
+    // ⚡ P0-5: 标记互斥组已使用（非兴趣类/宠物/情感的组只允许出现1个）
+    if (biaoqian.paizhe && huchiZuMing.has(biaoqian.paizhe)) yongguoZuhe.add(biaoqian.paizhe);
     tianjiaJishu++;
   }
 
@@ -1000,10 +1044,26 @@ function huoquZuheHuaiJieguo(dx) {
 }
 
 /* ==================== 反馈显示 ==================== */
-function xianshiFankui(wenben, shifouHao, xingdongLeixing, yincangBiaoqian) {
+function xianshiFankui(wenben, shifouHao, xingdongLeixing, yincangBiaoqian, shijiBianhua) {
   const wenbenEl = document.getElementById('fankui-wenben');
   wenbenEl.textContent = wenben;
   wenbenEl.className = 'fankui-wenben ' + (shifouHao ? 'fankui-wenben--hao' : 'fankui-wenben--huai');
+  // ⚡ P1-1: 坏结局时显示实际数值变化，增强感知
+  let tishiEl = document.getElementById('fankui-shiji-bianhua');
+  if (!tishiEl) {
+    tishiEl = document.createElement('p');
+    tishiEl.id = 'fankui-shiji-bianhua';
+    tishiEl.style.cssText = 'font-size:12px;margin:8px 0 0;padding:0;color:rgba(255,255,255,0.5);line-height:1.5;';
+    document.getElementById('fankui-wenbenkuang').appendChild(tishiEl);
+  }
+  if (!shifouHao && shijiBianhua) {
+    const yaliStr = shijiBianhua.yali >= 0 ? `压抑+${shijiBianhua.yali}` : `压抑${shijiBianhua.yali}`;
+    const wendingStr = shijiBianhua.wending >= 0 ? `稳定+${shijiBianhua.wending}` : `稳定${shijiBianhua.wending}`;
+    tishiEl.textContent = `⚠️ 代价：${yaliStr}  ${wendingStr}`;
+    tishiEl.style.display = '';
+  } else {
+    tishiEl.style.display = 'none';
+  }
   // 右上角好/坏结果标签（yincangBiaoqian=true时不显示，用于阴暗/空窗等非行动按钮）
   const biaoqianEl = document.getElementById('fankui-jieguo-biaoqian');
   if (yincangBiaoqian) {
@@ -1196,7 +1256,7 @@ function chuliXingdong(leixing) {
     } else if (leixing === 'yuejiudian') {
       gWenben = '洞房花烛夜...老娘现在没有很稀罕';
     }
-    xianshiFankui(gWenben, false, leixing);
+    xianshiFankui(gWenben, false, leixing, false, {yali: -xd.yaliBianhua, wending: -xd.wendingBianhua});
     ZHUANGTAI.yayiya = xianzhiFanwei(ZHUANGTAI.yayiya, 0, 100);
     ZHUANGTAI.wending = xianzhiFanwei(ZHUANGTAI.wending, 0, 100);
     ZHUANGTAI.xingdongJishu[leixing]++;
@@ -1233,7 +1293,7 @@ function chuliXingdong(leixing) {
     // 标签组合坏结果替换
     let jieguo = huoquZuheHuaiJieguo(ZHUANGTAI.dangqianDuixiang);
     if (!jieguo) jieguo = suijiCongShuzu(JIEGUO_SHUJU[leixing].huai);
-    xianshiFankui(jieguo, false, leixing);
+    xianshiFankui(jieguo, false, leixing, false, {yali: -xd.yaliBianhua, wending: -xd.wendingBianhua});
   } else {
     ZHUANGTAI.yayiya += xd.yaliBianhua;
     ZHUANGTAI.wending += xd.wendingBianhua;
@@ -1453,7 +1513,7 @@ function guanbiFuwuCuo() {
 function chuliTiaoshi() {
   if (ZHUANGTAI.youxiJieshu) return;
   // 立即触发奇遇模式，强制puppy分支
-  ZHUANGTAI.huichi = 20;
+  ZHUANGTAI.huichi = 15;
   document.getElementById('gouzi-qiyu').checked = true;
   ZHUANGTAI.qiYuMode = true;
   // 直接调用kaiqiQiyu，传入puppy参数
@@ -1474,7 +1534,7 @@ function chuliTiaoshiG() {
 function chuliTiaoshiEX() {
   if (ZHUANGTAI.youxiJieshu) return;
   // 立即触发奇遇模式，强制ex分支
-  ZHUANGTAI.huichi = 20;
+  ZHUANGTAI.huichi = 15;
   document.getElementById('gouzi-qiyu').checked = true;
   ZHUANGTAI.qiYuMode = true;
   kaiqiQiyu('ex');
@@ -1486,7 +1546,7 @@ function jinruXiaYiHuihe() {
   ZHUANGTAI.huichi++;
   // ⚡ v6.5: 移除每回合被动稳定下降（取消被动压抑机制）
   // 检查奇遇触发
-  if (ZHUANGTAI.huichi >= 20 && ZHUANGTAI.qiYuMode && !ZHUANGTAI.qiYuKaiqi) {
+  if (ZHUANGTAI.huichi >= 15 && ZHUANGTAI.qiYuMode && !ZHUANGTAI.qiYuKaiqi) {
     kaiqiQiyu();
     return;
   }
