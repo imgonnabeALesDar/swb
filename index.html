@@ -1583,13 +1583,12 @@ function jianchaJiejue() {
     jieshuYouxi('1b');
     return true;
   }
-  // ⚡ v6.5 FIX: 压抑值 = 0 即触发结局（不再要求稳定≥80）
-  // 结局1a: 压抑值 = 0 （压力完全释放）
+  // 结局1a: 压抑值 ≤ 0（压力完全释放）
   if (ZHUANGTAI.yayiya <= 0) {
     jieshuYouxi('1a');
     return true;
   }
-  // 结局2: 压抑值 = 100 （彻底崩溃）
+  // 结局2: 压抑值 = 100（彻底崩溃）
   if (ZHUANGTAI.yayiya >= 100) {
     jieshuYouxi('2');
     return true;
@@ -1643,9 +1642,9 @@ function jieshuYouxi(jiejueBianhao) {
 
   // ⚡ v6.4: 结局状态说明文字（告诉玩家为什么达成该结局）
   const zhuangtaiMap = {
-    '1a': `达成条件：心情压抑值归零（${ZHUANGTAI.yayiya}），且心情稳定值不低于80（${ZHUANGTAI.wending}）`,
+    '1a': `达成条件：心情压抑值归零（${ZHUANGTAI.yayiya}）`,
     '1b': `达成条件：心情稳定值达到满值（${ZHUANGTAI.wending}）`,
-    '2': `达成条件：心情压抑值爆表（${ZHUANGTAI.yayiya}），且稳定值接近崩溃`,
+    '2': `达成条件：心情压抑值爆表（${ZHUANGTAI.yayiya}）`,
     '3': `达成条件：心情稳定值归零（${ZHUANGTAI.wending}）`,
     '4': `达成条件：心情稳定值归零（${ZHUANGTAI.wending}），且整局游戏仅敢挤眼（共${ZHUANGTAI.xingdongJishu.jiyan}次）`,
     '5': '达成条件：奇遇 Chloe 线 — 试图拯救对方',
