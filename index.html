@@ -148,7 +148,7 @@ body.modal-lock{overflow:hidden;position:fixed;width:100%;}
 .fupan-lishi-item{background:rgba(255,255,255,0.05);border-radius:10px;padding:10px;margin-bottom:6px;font-size:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
 .fupan-lishi-item .fupan-xiaoyixiang{font-weight:700;font-size:14px;margin-bottom:4px;}
 .fupan-lishi-item .fupan-biaoqianlie{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;}
-.fupan-huaibiaoji{font-size:11px;color:#f43f5e;white-space:nowrap;font-weight:600;flex-shrink:0;margin-top:2px;}
+.fupan-huaibiaoji{font-size:11px;color:#f43f5e;white-space:nowrap;font-weight:600;flex-shrink:0;margin-top:2px;}.fupan-haobiaoji{font-size:11px;color:#6ee7b7;white-space:nowrap;font-weight:600;flex-shrink:0;margin-top:2px;}
 .cunchu{display:none;}
 .jiemi-yincang{opacity:1;animation:fadeInUp .4s ease forwards;}
 .luanma-zhendong{font-family:monospace;animation:luanma 0.1s ease-in-out infinite alternate;}
@@ -249,9 +249,9 @@ body.modal-lock{overflow:hidden;position:fixed;width:100%;}
         </div>
       </div>
       <div class="kaipian" id="kaipian-zhuti">
-        <button id="anniu-tiaoshi" onclick="chuliTiaoshi()" style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:3px 8px;font-size:10px;cursor:pointer;color:rgba(255,255,255,0.3);">DEBUG</button>
+        <button id="anniu-tiaoshi" onclick="chuliTiaoshi()" style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:3px 8px;font-size:10px;cursor:pointer;color:rgba(255,255,255,0.3);display:none;">DEBUG</button>
         <button id="anniu-tiaoshiG" onclick="chuliTiaoshiG()" style="position:absolute;top:10px;left:52px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:3px 8px;font-size:10px;cursor:pointer;color:rgba(255,255,255,0.3);display:none;">DEBUG-G</button>
-        <button id="anniu-tiaoshiEX" onclick="chuliTiaoshiEX()" style="position:absolute;top:10px;left:100px;background:rgba(249,168,212,0.15);border:1px solid rgba(249,168,212,0.3);border-radius:8px;padding:3px 8px;font-size:10px;cursor:pointer;color:#f9a8d4;">EX</button>
+        <button id="anniu-tiaoshiEX" onclick="chuliTiaoshiEX()" style="position:absolute;top:10px;left:100px;background:rgba(249,168,212,0.15);border:1px solid rgba(249,168,212,0.3);border-radius:8px;padding:3px 8px;font-size:10px;cursor:pointer;color:#f9a8d4;display:none;">EX</button>
         <button id="anniu-huanren" onclick="chuliHuanren()">💔换一个</button>
         <div class="kaipian-toubiao" id="kaipian-toubiao"><span id="toubiao-img">😊</span></div>
         <div class="kaipian-nicheng"><span id="nicheng-wenzi">加载中...</span></div>
@@ -451,11 +451,11 @@ const BIAOQIAN_SHUJU = [
   {wenzi:'got a long ex-list',weixi:5,paizhe:''},{wenzi:'貌似有crush',weixi:4,paizhe:''},
   // ⚡ v6.3 新增高危标签（直女/双性恋相关 + 其他）
   {wenzi:'有暴力倾向',weixi:8,yincang:true,paizhe:''},{wenzi:'海王',weixi:8,yincang:true,paizhe:''},
-  {wenzi:'只做不谈',weixi:9,yincang:true,paizhe:''},{wenzi:'刚分手',weixi:7,yincang:true,paizhe:''},
+  {wenzi:'只做不谈',weixi:8,yincang:true,paizhe:''},{wenzi:'刚分手',weixi:7,yincang:true,paizhe:''},
   {wenzi:'开放关系',weixi:8,yincang:true,paizhe:''},
   {wenzi:'NPD',weixi:7,yincang:true,paizhe:''},{wenzi:'有三四个暧昧对象',weixi:8,yincang:true,paizhe:''},
   {wenzi:'喜欢无缝衔接',weixi:8,yincang:true,paizhe:''},{wenzi:'列表2000人全是前任',weixi:8,yincang:true,paizhe:''},
-  {wenzi:'同时谈三个',weixi:9,yincang:true,paizhe:''}
+  {wenzi:'同时谈三个',weixi:8,yincang:true,paizhe:''}
 ];
 
 /* 签名池 */
@@ -1248,7 +1248,7 @@ function chuliXingdong(leixing) {
     ZHUANGTAI.lianshuHuaiJieguo++;
     let gWenben = '';
     if (leixing === 'jiyan') {
-      gWenben = '尴尬的是对方没有回挤你，还发了条新动态，手机来源变成了施华洛奇iPhone18';
+      gWenben = '尴尬的是对方没有回挤你，还发了条新动态，手机来源变成了施滑洛琪iPhone18';
     } else if (leixing === 'aime') {
       gWenben = '对方给你发来一条信息：谢谢你的喜欢，V我501可进群';
     } else if (leixing === 'yuejian') {
@@ -1278,7 +1278,7 @@ function chuliXingdong(leixing) {
   const shifouHuai = Math.random() < huaiJilv;
   // ⚡ v7.0: 记录回合结果，用于复盘
   ZHUANGTAI.huiheJilu.push({
-    huihe: ZHUANGTAI.huihe,
+    huihe: ZHUANGTAI.huichi,
     xingdong: leixing,
     shifouHao: !shifouHuai
   });
@@ -1298,6 +1298,7 @@ function chuliXingdong(leixing) {
     ZHUANGTAI.yayiya += xd.yaliBianhua;
     ZHUANGTAI.wending += xd.wendingBianhua;
     ZHUANGTAI.lianshuHuaiJieguo = 0;
+    if (ZHUANGTAI.dangqianDuixiang) ZHUANGTAI.dangqianDuixiang._shiHuaiJieguo = false;
     const jieguo = suijiCongShuzu(JIEGUO_SHUJU[leixing].hao);
     xianshiFankui(jieguo, true, leixing);
   }
@@ -1367,8 +1368,8 @@ function chuliHuanren() {
       queding.textContent = '好的';
       queding.onclick = guanbiFuwuCuo;
       document.getElementById('mohei-fuwucq').style.display = 'flex';
-    } else if (ZHUANGTAI.puppyHuanrenCishu === 2) {
-      // 第2次：直接弹窗 + 立即触发 luanma → 留下 流程（复用 guanbiFuwuCuo 的 ===2 分支）
+    } else if (ZHUANGTAI.puppyHuanrenCishu >= 2) {
+      // 第2次+：直接弹窗 + 立即触发 luanma → 留下 流程（复用 guanbiFuwuCuo 的 ===2 分支）
       document.getElementById('fuwucq-biaoti').textContent = '⚠️ 服务器不太听话';
       document.getElementById('fuwucq-neirong').textContent =
         '啊哦...服务器开小差了，请重新尝试换人吧！';
@@ -1561,7 +1562,8 @@ function jinruXiaYiHuihe() {
       toubiao: ZHUANGTAI.dangqianDuixiang.toubiao,
       nicheng: ZHUANGTAI.dangqianDuixiang.nicheng,
       qianming: ZHUANGTAI.dangqianDuixiang.qianming,
-      biaoqianLiebiao: ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao.map(b => ({...b}))
+      biaoqianLiebiao: ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao.map(b => ({...b})),
+      _shiHuaiJieguo: ZHUANGTAI.dangqianDuixiang._shiHuaiJieguo
     });
   }
   ZHUANGTAI.dangqianDuixiang = shengchengDuixiang(null);
@@ -1665,11 +1667,12 @@ async function kaiqiQiyu(quidingJuese) {
       toubiao: ZHUANGTAI.dangqianDuixiang.toubiao,
       nicheng: ZHUANGTAI.dangqianDuixiang.nicheng,
       qianming: ZHUANGTAI.dangqianDuixiang.qianming,
-      biaoqianLiebiao: ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao.map(b => ({...b}))
+      biaoqianLiebiao: ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao.map(b => ({...b})),
+      _shiHuaiJieguo: ZHUANGTAI.dangqianDuixiang._shiHuaiJieguo
     });
   }
   // 选择角色（chole 暂未上线，仅 ex / puppy 二选一）
-  const xuanzhong = quidingJuese || (Math.random() < 0.5 ? 'ex' : 'puppy');
+  const xuanzhong = quidingJuese || (Math.random() < 0.4 ? 'ex' : 'puppy');
   ZHUANGTAI.duihuaJuese = xuanzhong;
 
   // ⚡ v7.3 P0-8/P0-9: 公共 — 进入奇遇模式 UI 改造（隐藏 checkbox + 文案高亮）
@@ -2057,7 +2060,13 @@ function xianshiFupan() {
   const lishiDiv = document.getElementById('fupan-lishi');
   lishiDiv.innerHTML = '';
   if (ZHUANGTAI.dangqianDuixiang) {
-    ZHUANGTAI.duixiangLishi.push(ZHUANGTAI.dangqianDuixiang);
+    ZHUANGTAI.duixiangLishi.push({
+      toubiao: ZHUANGTAI.dangqianDuixiang.toubiao,
+      nicheng: ZHUANGTAI.dangqianDuixiang.nicheng,
+      qianming: ZHUANGTAI.dangqianDuixiang.qianming,
+      biaoqianLiebiao: ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao.map(b => ({...b})),
+      _shiHuaiJieguo: ZHUANGTAI.dangqianDuixiang._shiHuaiJieguo
+    });
   }
   for (const dx of ZHUANGTAI.duixiangLishi) {
     const item = document.createElement('div');
@@ -2073,8 +2082,10 @@ function xianshiFupan() {
       biaoqianHtml += '<span class="' + cls + '">' + (bq.yincang ? '???' : bq.wenzi) + '</span>';
     }
     biaoqianHtml += '</div>';
-    const huaiBiaoji = dx._shiHuaiJieguo ? '<span class="fupan-huaibiaoji">💔 坏结果</span>' : '';
-    item.innerHTML = '<div><div class="fupan-xiaoyixiang">' + (dx.toubiao || '') + ' ' + (dx.nicheng || '') + '</div>' + biaoqianHtml + '</div>' + huaiBiaoji;
+    let jieguoBiaoji = '';
+    if (dx._shiHuaiJieguo === true) jieguoBiaoji = '<span class="fupan-huaibiaoji">💔 坏结果</span>';
+    else if (dx._shiHuaiJieguo === false) jieguoBiaoji = '<span class="fupan-haobiaoji">💚 好结果</span>';
+    item.innerHTML = '<div><div class="fupan-xiaoyixiang">' + (dx.toubiao || '') + ' ' + (dx.nicheng || '') + '</div>' + biaoqianHtml + '</div>' + jieguoBiaoji;
     lishiDiv.appendChild(item);
   }
 }
@@ -2136,8 +2147,8 @@ function chongqiYouxiJiemian() {
   const qiyuWenzi = document.getElementById('qiyu-wenzi');
   if (dinglanQiyu) dinglanQiyu.classList.remove('qiyu-active');
   if (qiyuWenzi) qiyuWenzi.textContent = '奇遇模式';
-  // 恢复DEBUG按钮
-  document.getElementById('anniu-tiaoshi').style.display = 'block';
+  // DEBUG按钮：上线后保持隐藏
+  // document.getElementById('anniu-tiaoshi').style.display = 'block';
   gengxinJiemian();
 }
 
