@@ -28,6 +28,9 @@ body.modal-lock{overflow:hidden;position:fixed;width:100%;}
 #gouzi-qiyu:checked{background:#f9a8d4;border-color:#f9a8d4;}
 #gouzi-qiyu:checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:12px;color:#1a0510;font-weight:700;}
 .qiyu-wenzi{font-size:12px;color:rgba(255,255,255,0.55);}
+/* ⚡ v7.3 P0-8/P0-9: 奇遇激活状态 — 隐藏 checkbox，文案高亮加粗 */
+.dinglan-qiyu.qiyu-active #gouzi-qiyu{display:none;}
+.dinglan-qiyu.qiyu-active .qiyu-wenzi{font-weight:700;color:#f9a8d4;}
 .shuzhitiao-qu{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
 .shuzhitiao--yayiya,.shuzhitiao--wending{display:flex;align-items:center;gap:8px;}
 .shuzhitiao-biaoqian{font-size:12px;min-width:72px;color:rgba(255,255,255,0.7);text-align:right;}
@@ -76,7 +79,7 @@ body.modal-lock{overflow:hidden;position:fixed;width:100%;}
 .gongjuhang{display:flex;gap:8px;margin-bottom:12px;}
 .gongjuhang .anniu-xingdong{flex:1;font-size:12px;padding:8px 6px;}
 .fankui{display:none;}
-#mohei-fankui{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);z-index:1800;display:flex;align-items:center;justify-content:center;padding:20px;}
+#mohei-fankui{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:1800;display:flex;align-items:center;justify-content:center;padding:20px;}
 #mohei-fankui .mohei-neirong{position:relative;max-width:360px;}
 #mohei-fankui .mohei-neirong .fankui-biaoti{font-size:16px;font-weight:700;color:#f9a8d4;margin-bottom:10px;}
 #fankui-jieguo-biaoqian{position:absolute;top:10px;right:14px;font-size:12px;font-weight:700;padding:2px 8px;border-radius:8px;}
@@ -93,11 +96,11 @@ body.modal-lock{overflow:hidden;position:fixed;width:100%;}
 .tishi-qiyu.popOut{animation:popOut .3s ease forwards;}
 #mohei-guihe,#mohei-jieshao{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:2000;display:flex;align-items:center;justify-content:center;padding:40px 20px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 #mohei-guihe::-webkit-scrollbar,#mohei-jieshao::-webkit-scrollbar{display:none;}
-#mohei-fuwucq{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;}
-#mohei-qiyushuoming{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;}
+#mohei-fuwucq{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;}
+#mohei-qiyushuoming{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;}
 #mohei-qiyushuoming .mohei-neirong{text-align:left;}
 .mohei-neirong{background:rgba(59,10,26,0.95);border:1px solid rgba(255,255,255,0.15);border-radius:18px;padding:28px 24px;max-width:400px;width:100%;text-align:left;word-break:break-word;overflow-wrap:break-word;}
-#mohei-guihe .mohei-neirong,#mohei-jieshao .mohei-neirong{max-height:calc(100vh - 12vh);display:flex;flex-direction:column;padding:24px 20px;}
+#mohei-guihe .mohei-neirong,#mohei-jieshao .mohei-neirong{max-height:calc(100vh - 12vh);display:flex;flex-direction:column;padding:24px 20px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 #mohei-guihe .mohei-neirong>p,#mohei-jieshao .mohei-neirong>p{flex:0 1 auto;}
 /* ⚡ fix: 合规/介绍弹窗按钮始终可见居中：内容区滚动，按钮固定底部 */
 #mohei-guihe .mohei-neirong>button,#mohei-jieshao .mohei-neirong>button{flex-shrink:0;margin-top:16px;}
@@ -109,7 +112,7 @@ body.modal-lock{overflow:hidden;position:fixed;width:100%;}
 .mohei-neirong p{font-size:13px;line-height:2.2;color:rgba(255,255,255,0.75);margin-bottom:18px;}
 .mohei-neirong button{background:linear-gradient(135deg,#f9a8d4,#c084fc);border:none;border-radius:10px;padding:10px 32px;font-size:14px;font-weight:600;color:#1a0510;cursor:pointer;transition:opacity .2s;display:block;margin:0 auto;width:100%;}
 .mohei-neirong button:hover{opacity:.85;}
-#tanchuang-duihua{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);z-index:1500;display:flex;align-items:center;justify-content:center;padding:12px;}
+#tanchuang-duihua{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:1500;display:flex;align-items:center;justify-content:center;padding:12px;}
 .duihua-moban{background:rgba(59,10,26,0.97);border:1px solid rgba(255,255,255,0.15);border-radius:18px;max-width:440px;width:100%;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;}
 .duihua-biaotilan{padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;gap:10px;}
 #duihua-renwumingzi{font-weight:700;font-size:15px;color:#f9a8d4;}
@@ -164,7 +167,7 @@ body.modal-lock{overflow:hidden;position:fixed;width:100%;}
 .flipIn{animation:flipIn .5s ease forwards;}
 @media(max-width:500px){
 #youxi-rongqi{padding:8px;overflow-x:hidden;}
-.mban{padding:16px 14px;min-height:550px;border-radius:16px;overflow-x:hidden;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
+.mban{padding:16px 14px;min-height:550px;border-radius:16px;overflow-x:hidden;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
 .dinglan-biaoti{font-size:15px;}
 .kaipian{min-height:auto;height:auto;padding:12px;word-break:break-word;overflow-wrap:break-word;}
 .kaipian-toubiao{width:52px;height:52px;font-size:28px;}
@@ -175,8 +178,8 @@ body.modal-lock{overflow:hidden;position:fixed;width:100%;}
 .anniu-xingdong .anniu-xiaozishu{font-size:9px;line-height:1.2;}
 .xingdongqu{gap:6px;grid-template-columns:1fr 1fr;}
 /* 弹窗移动端：居中 + 内容区独立滚动 */
-#mohei-guihe,#mohei-jieshao{padding:30px 12px;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
-#mohei-guihe .mohei-neirong,#mohei-jieshao .mohei-neirong{max-height:calc(100vh - 60px);padding:20px 16px;border-radius:14px;}
+#mohei-guihe,#mohei-jieshao{padding:30px 12px;background:rgba(0,0,0,0.7);/* ⚡ 移除 backdrop-filter:blur — 半透明黑底已足够，blur 导致主线程卡顿，点击事件延迟丢失 */}
+#mohei-guihe .mohei-neirong,#mohei-jieshao .mohei-neirong{max-height:calc(100vh - 60px);padding:20px 16px;border-radius:14px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .mohei-neirong p{font-size:12px;line-height:1.8;word-break:break-word;overflow-wrap:break-word;margin-bottom:14px;}
 .mohei-neirong h2{font-size:17px;line-height:1.4;margin-bottom:12px;padding-bottom:10px;}
 .mohei-neirong button{padding:10px 24px;font-size:13px;}
@@ -228,9 +231,9 @@ body.modal-lock{overflow:hidden;position:fixed;width:100%;}
         <div class="dinglan-huihe">第 <span id="shuzi-huihe">1</span> 回合</div>
         <div class="dinglan-biaoti">挤眼模拟器</div>
         <div class="dinglan-fuyibiaoti">SHE WINKS BACK</div>
-        <div class="dinglan-qiyu">
+        <div class="dinglan-qiyu" id="dinglan-qiyu">
           <input type="checkbox" id="gouzi-qiyu" checked>
-          <span class="qiyu-wenzi">奇遇模式</span>
+          <span class="qiyu-wenzi" id="qiyu-wenzi">奇遇模式</span>
         </div>
       </div>
       <div class="shuzhitiao-qu">
@@ -784,10 +787,12 @@ function chongzhiZhuangtai() {
     youxiJieshu: false,
     xianshiJiejue: null,
     _fankuiHuiche: null,
+    _huanrenCooldown: false,  // ⚡ v7.2: 换人冷却期（防连续点击）
     wanchengHuihe: 0,
     puppyHuanrenCishu: 0,
     exHuanrenCishu: 0,      // ⚡ v7.1: ex换人点击计数
     exJiejueCunzai: null,   // ⚡ v7.1: ex中间结局记录
+    _puppyXingdongTishiDone: false,  // ⚡ v7.3 P0-8: puppy行动按钮拦截提示是否已展示
     lianshuHuaiJieguo: 0,
     jiyanCishu: 0,
     gCharacterAppeared: false,
@@ -995,14 +1000,19 @@ function huoquZuheHuaiJieguo(dx) {
 }
 
 /* ==================== 反馈显示 ==================== */
-function xianshiFankui(wenben, shifouHao, xingdongLeixing) {
+function xianshiFankui(wenben, shifouHao, xingdongLeixing, yincangBiaoqian) {
   const wenbenEl = document.getElementById('fankui-wenben');
   wenbenEl.textContent = wenben;
   wenbenEl.className = 'fankui-wenben ' + (shifouHao ? 'fankui-wenben--hao' : 'fankui-wenben--huai');
-  // 右上角好/坏结果标签
+  // 右上角好/坏结果标签（yincangBiaoqian=true时不显示，用于阴暗/空窗等非行动按钮）
   const biaoqianEl = document.getElementById('fankui-jieguo-biaoqian');
-  biaoqianEl.textContent = shifouHao ? '✅ 好结果' : '❌ 坏结果';
-  biaoqianEl.className = shifouHao ? 'fankui-biaoqian--hao' : 'fankui-biaoqian--huai';
+  if (yincangBiaoqian) {
+    biaoqianEl.textContent = '';
+    biaoqianEl.className = '';
+  } else {
+    biaoqianEl.textContent = shifouHao ? '✅ 好结果' : '❌ 坏结果';
+    biaoqianEl.className = shifouHao ? 'fankui-biaoqian--hao' : 'fankui-biaoqian--huai';
+  }
   // 显示行动标题
   const biaotiEl = document.getElementById('fankui-biaoti');
   if (xingdongLeixing && XINGDONG_SHUJU[xingdongLeixing]) {
@@ -1127,27 +1137,48 @@ function gengxinKaipian() {
   }
   // 换人按钮
   const huanrenBtn = document.getElementById('anniu-huanren');
-  if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese !== 'puppy' && ZHUANGTAI.duihuaJuese !== 'ex') {
+  huanrenBtn.textContent = '💔 换一个';
+  // ⚡ v7.3 P0-9: ex 奇遇线 → 全程禁用换人
+  // ⚡ v7.2: 普通模式换人冷却期 → 禁用
+  // ⚡ 其他奇遇兜底（chloe 等） → 显示 🚫
+  // 其余情况：按钮可用
+  if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'ex') {
+    huanrenBtn.disabled = true;
+  } else if (ZHUANGTAI._huanrenCooldown) {
+    huanrenBtn.disabled = true;
+  } else if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese && ZHUANGTAI.duihuaJuese !== 'puppy') {
     huanrenBtn.disabled = true;
     huanrenBtn.textContent = '🚫';
-  } else if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'ex') {
-    // ⚡ v7.1: ex模式：点击1次后禁用（由chuliHuanren处理）
-    const exClicked = (ZHUANGTAI.exHuanrenCishu || 0) >= 1;
-    huanrenBtn.disabled = exClicked;
-    huanrenBtn.textContent = '💔 换一个';
-  } else if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy') {
-    // puppy模式：按钮始终可用
-    huanrenBtn.disabled = false;
-    huanrenBtn.textContent = '💔 换一个';
   } else {
     huanrenBtn.disabled = false;
-    huanrenBtn.textContent = '💔 换一个';
   }
 }
 
 /* ==================== 行动处理 v6.5 ==================== */
 function chuliXingdong(leixing) {
   if (ZHUANGTAI.youxiJieshu) return;
+  // ⚡ v7.3 P0-8: puppy 奇遇线 — 行动按钮拦截一次，弹通用提示弹窗
+  if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy'
+      && !ZHUANGTAI._puppyXingdongTishiDone) {
+    ZHUANGTAI._puppyXingdongTishiDone = true;
+    document.getElementById('fuwucq-biaoti').textContent = '💭';
+    document.getElementById('fuwucq-neirong').innerHTML =
+      '咦....怎么点了没反应<br>那试试<strong>换一个人</strong>吧';
+    const queding = document.getElementById('fuwucu-queding');
+    queding.textContent = '好的';
+    queding.onclick = function() {
+      document.getElementById('mohei-fuwucq').style.display = 'none';
+      // 关闭后：行动按钮全禁，换人按钮加 xintiao 心跳
+      DOM.jiyan.disabled = true;
+      DOM.aime.disabled = true;
+      DOM.yuejian.disabled = true;
+      DOM.yuejiudian.disabled = true;
+      const huanrenBtn = document.getElementById('anniu-huanren');
+      if (huanrenBtn) { huanrenBtn.disabled = false; huanrenBtn.classList.add('xintiao'); }
+    };
+    document.getElementById('mohei-fuwucq').style.display = 'flex';
+    return;
+  }
   // ⚡ v6.5: 移除被动增压（取消被动压抑机制）
   const xd = XINGDONG_SHUJU[leixing];
   // ⚡ v6.3: G 固定角色：所有行动均为坏结局，使用固定文案
@@ -1258,35 +1289,35 @@ function chuliLiaotian() {
 
 function chuliHuanren() {
   if (ZHUANGTAI.youxiJieshu) return;
-  // ⚡ v7.1: ex线特殊换人机制（点击1次弹窗后禁用）
+  // ⚡ v7.3 P0-9: ex 奇遇线全程禁用换人按钮（gengxinJiemian 已设 disabled），此处兜底直接 return
   if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'ex') {
-    ZHUANGTAI.exHuanrenCishu = (ZHUANGTAI.exHuanrenCishu || 0) + 1;
-    if (ZHUANGTAI.exHuanrenCishu === 1) {
-      document.getElementById('fuwucq-biaoti').textContent = '💭';
-      document.getElementById('fuwucq-neirong').textContent = '等会，这个人好像有点眼熟';
-      document.getElementById('fuwucu-queding').textContent = '...';
-      document.getElementById('fuwucu-queding').onclick = function() {
-        guanbiFuwuCuo();
-        // 禁用换人按钮
-        const huanrenBtn = document.getElementById('anniu-huanren');
-        if (huanrenBtn) { huanrenBtn.disabled = true; huanrenBtn.style.opacity = '0.35'; }
-      };
-      document.getElementById('mohei-fuwucq').style.display = 'flex';
-    }
     return;
   }
-  // 奇遇模式下puppy的特殊点击机制（⚡ v6.3: 2次点击触发文本变动）
+  // ⚡ v7.3 P0-8: puppy 换人机制
+  // 第1次：弹"服务器开小差"弹窗，玩家点"好的"关闭
+  // 第2次：直接走异变流程（不再弹服务器错误，由 guanbiFuwuCuo 中 ===2 分支驱动 luanma+留下）
   if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy') {
     ZHUANGTAI.puppyHuanrenCishu = (ZHUANGTAI.puppyHuanrenCishu || 0) + 1;
-    // 第1次点击：心跳高亮保持，引导玩家再点一次
-    // 第2次点击：移除心跳（在 guanbiFuwuCuo 中触发文本变动后移除）
-    if (ZHUANGTAI.puppyHuanrenCishu <= 2) {
-      // 显示服务器错误弹窗
-      document.getElementById('fuwucq-biaoti').textContent = '😵 服务器开小差了';
-      document.getElementById('fuwucq-neirong').textContent = '啊哦...服务器开小差了，请重新尝试换人吧！';
-      document.getElementById('fuwucu-queding').textContent = '好的';
-      document.getElementById('fuwucu-queding').onclick = guanbiFuwuCuo;
+    if (ZHUANGTAI.puppyHuanrenCishu === 1) {
+      // 第1次：服务器错误弹窗
+      document.getElementById('fuwucq-biaoti').textContent = '⚠️';
+      document.getElementById('fuwucq-neirong').textContent =
+        '啊哦...服务器开小差了，请重新尝试换人吧！';
+      const queding = document.getElementById('fuwucu-queding');
+      queding.textContent = '好的';
+      queding.onclick = guanbiFuwuCuo;
       document.getElementById('mohei-fuwucq').style.display = 'flex';
+    } else if (ZHUANGTAI.puppyHuanrenCishu === 2) {
+      // 第2次：直接弹窗 + 立即触发 luanma → 留下 流程（复用 guanbiFuwuCuo 的 ===2 分支）
+      document.getElementById('fuwucq-biaoti').textContent = '⚠️';
+      document.getElementById('fuwucq-neirong').textContent =
+        '啊哦...服务器开小差了，请重新尝试换人吧！';
+      const queding = document.getElementById('fuwucu-queding');
+      queding.textContent = '好的';
+      queding.onclick = guanbiFuwuCuo;
+      document.getElementById('mohei-fuwucq').style.display = 'flex';
+      // 立即触发文本变动（不等玩家点击"好的"）
+      setTimeout(() => guanbiFuwuCuo(), 50);
     }
     return;
   }
@@ -1299,6 +1330,10 @@ function chuliHuanren() {
   if (ZHUANGTAI.dangqianDuixiang) {
     ZHUANGTAI.duixiangLishi.push({toubiao:ZHUANGTAI.dangqianDuixiang.toubiao,nicheng:ZHUANGTAI.dangqianDuixiang.nicheng,qianming:ZHUANGTAI.dangqianDuixiang.qianming,biaoqianLiebiao:ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao.map(b => ({...b}))});
   }
+  // ⚡ v7.2: 立即禁用换人按钮，防止600ms内重复点击连续换人
+  const huanrenBtnNormal = document.getElementById('anniu-huanren');
+  if (huanrenBtnNormal) huanrenBtnNormal.disabled = true;
+  ZHUANGTAI._huanrenCooldown = true;
   ZHUANGTAI.yayiya += 5;
   ZHUANGTAI.wending -= 3;
   ZHUANGTAI.yayiya = xianzhiFanwei(ZHUANGTAI.yayiya, 0, 100);
@@ -1308,6 +1343,7 @@ function chuliHuanren() {
   gengxinJiemian();
   ZHUANGTAI._huanrenGengxin = true;
   setTimeout(() => {
+    ZHUANGTAI._huanrenCooldown = false;
     if (jianchaJiejue()) return;
     jinruXiaYiHuihe();
   }, 600);
@@ -1322,7 +1358,7 @@ function chuliKongchuang() {
   ZHUANGTAI.wending = xianzhiFanwei(ZHUANGTAI.wending, 0, 100);
   ZHUANGTAI.xingdongJishu.kongchuang++;
   ZHUANGTAI.lixiangXiangneiCi++;
-  xianshiFankui('空窗期，好好爱自己', true);
+  xianshiFankui('空窗期，好好爱自己', true, null, true);
   gengxinJiemian();
   setTimeout(() => {
     if (jianchaJiejue()) return;
@@ -1341,7 +1377,7 @@ function chuliKuitan() {
   const dx = ZHUANGTAI.dangqianDuixiang;
   const youYincang = dx && dx.biaoqianLiebiao.some(b => b.yincang);
   if (!youYincang) {
-    xianshiFankui('没有可以解锁的标签了~', false, 'kuitan');
+    xianshiFankui('没有可以解锁的标签了~', false, 'kuitan', true);
     gengxinJiemian();
     return;
   }
@@ -1369,11 +1405,11 @@ function guanbiFuwuCuo() {
   if (ZHUANGTAI.qiYuKaiqi && ZHUANGTAI.duihuaJuese === 'puppy' && ZHUANGTAI.puppyHuanrenCishu === 2) {
     const neirongEl = document.getElementById('fuwucq-neirong');
     const btnEl = document.getElementById('fuwucu-queding');
-    // 先添加乱码抖动效果，持续0.05秒
+    // 先添加乱码抖动效果
     neirongEl.classList.add('luanma-zhendong');
     neirongEl.textContent = '啊哦...服务器开小差了，请重新尝试换人吧！';
     setTimeout(() => {
-      // 乱码抖动0.05秒后，开始逐字替换
+      // 乱码抖动后，开始逐字替换
       neirongEl.classList.remove('luanma-zhendong');
       neirongEl.textContent = '';
       const morWenben = '姐姐，就这么想换人吗？留下来吧。';
@@ -1384,12 +1420,10 @@ function guanbiFuwuCuo() {
           idx++;
         } else {
           clearInterval(zimuXian);
-          // 按钮从"好的"变成"留下"
           btnEl.textContent = '留下';
           btnEl.onclick = function() {
-            // 点击"留下"：关闭弹窗→移除心跳高亮→1秒后开始puppy对话
             document.getElementById('mohei-fuwucq').style.display = 'none';
-            DOM.huanren.classList.remove('xintiao');  // ⚡ v6.3: 第2次点击触发后移除心跳
+            DOM.huanren.classList.remove('xintiao');
             setTimeout(() => {
               duihuaXianshi('puppy', 'puppy-a');
             }, 1000);
@@ -1514,6 +1548,14 @@ function jieshuYouxi(jiejueBianhao) {
   ZHUANGTAI.xianshiJiejue = jiejueBianhao;
   ZHUANGTAI._fankuiHuiche = null;
   document.getElementById('mohei-fankui').style.display = 'none';
+  // ⚡ v7.3 P0-8/P0-9: 结局触发后清理换人/聊天按钮的 xintiao 心跳特效
+  const huanrenBtn = document.getElementById('anniu-huanren');
+  const liaotianBtn = document.getElementById('anniu-liaotian');
+  if (huanrenBtn) huanrenBtn.classList.remove('xintiao');
+  if (liaotianBtn) {
+    liaotianBtn.classList.remove('xintiao');
+    liaotianBtn.textContent = '💬 聊天解锁标签';
+  }
   // 存储游玩次数
   const cishu = parseInt(localStorage.getItem('jiyan_jushu') || '0') + 1;
   localStorage.setItem('jiyan_jushu', String(cishu));
@@ -1550,11 +1592,12 @@ function jieshuYouxi(jiejueBianhao) {
   document.getElementById('jiejue-zhuangtai').textContent = zhuangtaiMap[jiejueBianhao] || '';
 }
 
-/* ==================== 奇遇模式 v6.3 ==================== */
+/* ==================== 奇遇模式 ==================== */
 async function kaiqiQiyu(quidingJuese) {
   ZHUANGTAI.qiYuKaiqi = true;
   ZHUANGTAI.puppyHuanrenCishu = 0;
-  ZHUANGTAI.exHuanrenCishu = 0; // ⚡ v7.1: ex换人计数器
+  ZHUANGTAI.exHuanrenCishu = 0;
+  ZHUANGTAI._puppyXingdongTishiDone = false;
   // 保存当前对象到历史
   if (ZHUANGTAI.dangqianDuixiang) {
     ZHUANGTAI.duixiangLishi.push({
@@ -1564,27 +1607,22 @@ async function kaiqiQiyu(quidingJuese) {
       biaoqianLiebiao: ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao.map(b => ({...b}))
     });
   }
-  // 选择角色（⚡ v7.1: 50% ex / 50% puppy，chole已禁用）
-  let xuanzhong;
-  if (quidingJuese) {
-    xuanzhong = quidingJuese;
-  } else {
-    // chole 暂不出现，仅 ex 和 puppy 二选一
-    const jueses = ['ex', 'puppy'];
-    xuanzhong = Math.random() < 0.5 ? 'ex' : 'puppy';
-  }
+  // 选择角色（chole 暂未上线，仅 ex / puppy 二选一）
+  const xuanzhong = quidingJuese || (Math.random() < 0.5 ? 'ex' : 'puppy');
   ZHUANGTAI.duihuaJuese = xuanzhong;
-  // puppy线不修改数值，保持当前状态
-  // 隐藏4个行动按钮
-  DOM.jiyan.disabled = true;
-  DOM.aime.disabled = true;
-  DOM.yuejian.disabled = true;
-  DOM.yuejiudian.disabled = true;
-  // 禁用阴暗窥探和空窗自我成长按钮
+
+  // ⚡ v7.3 P0-8/P0-9: 公共 — 进入奇遇模式 UI 改造（隐藏 checkbox + 文案高亮）
+  const dinglanQiyu = document.getElementById('dinglan-qiyu');
+  const qiyuWenzi = document.getElementById('qiyu-wenzi');
+  if (dinglanQiyu) dinglanQiyu.classList.add('qiyu-active');
+  if (qiyuWenzi) qiyuWenzi.textContent = '已进入奇遇模式';
+
+  // 阴暗窥探、空窗：两线均禁用
   ZHUANGTAI.kuitanYongguo = true;
   ZHUANGTAI.kongchuangYongguo = true;
   DOM.kuitan.disabled = true;
   DOM.kongchuang.disabled = true;
+
   // 生成奇遇对象
   const shuju = DUIHUA_SHU[xuanzhong];
   ZHUANGTAI.dangqianDuixiang = {
@@ -1602,50 +1640,76 @@ async function kaiqiQiyu(quidingJuese) {
     ];
     ZHUANGTAI.dangqianDuixiang.qianming = '蹲一个姐姐';
   } else if (xuanzhong === 'ex') {
-    // ⚡ v7.1: ex 固定属性
     ZHUANGTAI.dangqianDuixiang.biaoqianLiebiao = [
       {wenzi:'念旧',weixi:0,yincang:false}
     ];
     ZHUANGTAI.dangqianDuixiang.qianming = shuju.qianming || '回忆的碎片可以推开噩梦';
   }
-  gengxinJiemian();
-  // ====== puppy 分支 ======
+
+  // ====== puppy 分支 ⚡ v7.3 P0-8 ======
+  // 行动按钮保持可用，玩家点击后由 chuliXingdong 拦截并弹提示弹窗
   if (xuanzhong === 'puppy') {
-    await xianshiJiemiTishi('咦，怎么不能挤眼了....', 2000);
-    await new Promise(r => setTimeout(r, 50));
-    await xianshiJiemiTishi('那换一个人试试', 2000);
+    DOM.jiyan.disabled = false;
+    DOM.aime.disabled = false;
+    DOM.yuejian.disabled = false;
+    DOM.yuejiudian.disabled = false;
+    // 换人按钮：可用但暂不加 xintiao（玩家先点行动按钮触发拦截后才高亮）
     const huanrenBtn = document.getElementById('anniu-huanren');
-    if (huanrenBtn) huanrenBtn.classList.add('xintiao');
+    if (huanrenBtn) { huanrenBtn.disabled = false; huanrenBtn.classList.remove('xintiao'); }
+    gengxinJiemian();
     return;
   }
-  // ====== ex 分支 ⚡ v7.1 ======
+
+  // ====== ex 分支 ⚡ v7.3 P0-9 ======
+  // 全部按钮禁用 → 1s 后弹通用提示弹窗 → 确认后给聊天按钮加 xintiao
   if (xuanzhong === 'ex') {
-    // ex线聊天按钮文本改为"聊天"
+    DOM.jiyan.disabled = true;
+    DOM.aime.disabled = true;
+    DOM.yuejian.disabled = true;
+    DOM.yuejiudian.disabled = true;
+    const huanrenBtn = document.getElementById('anniu-huanren');
+    if (huanrenBtn) huanrenBtn.disabled = true;
     const liaotianBtn = document.getElementById('anniu-liaotian');
-    if (liaotianBtn) liaotianBtn.textContent = '💬 聊天';
-    // 等待1秒后弹出第一段文本
-    await new Promise(r => setTimeout(r, 1000));
-    await xianshiJiemiTishi('这人怎么好像有点眼熟？难道是前任？', 2000);
-    await new Promise(r => setTimeout(r, 500));
-    await xianshiJiemiTishi('那看看她过得怎么样吧', 2000);
-    // 文本框消失后：行动选项+阴暗+空窗禁用，聊天按钮高亮心跳
     if (liaotianBtn) {
-      setTimeout(() => {
-        liaotianBtn.classList.add('xintiao');
-        liaotianBtn.disabled = false;  // ⚡ fix: 高亮后必须可点击（ex无隐藏标签会被默认禁用）
-      }, 300);
+      liaotianBtn.textContent = '💬 聊天';
+      liaotianBtn.disabled = true;
+      liaotianBtn.classList.remove('xintiao');
     }
+    gengxinJiemian();
+    // 停顿 1s 让玩家看清 ex 卡片
+    await new Promise(r => setTimeout(r, 1000));
+    // 弹通用提示弹窗
+    document.getElementById('fuwucq-biaoti').textContent = '🍂';
+    document.getElementById('fuwucq-neirong').innerHTML =
+      '怎么觉得这人有点眼熟？<br>难道是前任？<br>那看看她现在过得怎样吧';
+    const queding = document.getElementById('fuwucu-queding');
+    queding.textContent = '好的';
+    queding.onclick = function() {
+      document.getElementById('mohei-fuwucq').style.display = 'none';
+      // 关闭后聊天按钮高亮
+      if (liaotianBtn) {
+        liaotianBtn.disabled = false;
+        liaotianBtn.classList.add('xintiao');
+      }
+    };
+    document.getElementById('mohei-fuwucq').style.display = 'flex';
     return;
   }
-  // 非puppy非ex奇遇（chloe等）
+
+  // ====== 其他奇遇（chloe 等）兜底 ======
+  DOM.jiyan.disabled = true;
+  DOM.aime.disabled = true;
+  DOM.yuejian.disabled = true;
+  DOM.yuejiudian.disabled = true;
+  const huanrenBtnFallback = document.getElementById('anniu-huanren');
+  if (huanrenBtnFallback) huanrenBtnFallback.disabled = true;
+  gengxinJiemian();
   await xianshiJiemiTishi('咦，怎么不能挤眼了....', 1500);
   await new Promise(r => setTimeout(r, 50));
   await xianshiJiemiTishi('那换一个人试试', 2000);
   setTimeout(() => {
     document.getElementById('mohei-fuwucq').style.display = 'flex';
-    const huanrenBtn = document.getElementById('anniu-huanren');
-    huanrenBtn.disabled = true;
-    huanrenBtn.textContent = '🚫';
+    if (huanrenBtnFallback) huanrenBtnFallback.textContent = '🚫';
   }, 800);
 }
 
@@ -1994,14 +2058,23 @@ function chongqiYouxiJiemian() {
   const huanrenBtn = DOM.huanren;
   huanrenBtn.disabled = false;
   huanrenBtn.textContent = '💔 换一个';
+  huanrenBtn.classList.remove('xintiao');  // ⚡ v7.3 P0-8: 清理心跳残留
+  huanrenBtn.style.opacity = '';            // ⚡ 清理 ex 线设置的 inline opacity
   huanrenBtn.onclick = function() { chuliHuanren(); };
   // 恢复所有区域可见性
   document.getElementById('xingdongqu').style.display = '';
   document.getElementById('gongjuhang').style.display = '';
-  document.getElementById('anniu-liaotian').style.display = '';
-  document.getElementById('anniu-liaotian').textContent = '💬 聊天解锁标签';  // ⚡ fix: ex线改了文本，重启需恢复
+  const liaotianBtn = document.getElementById('anniu-liaotian');
+  liaotianBtn.style.display = '';
+  liaotianBtn.textContent = '💬 聊天解锁标签';  // ⚡ ex 线改过文本，重启需恢复
+  liaotianBtn.classList.remove('xintiao');     // ⚡ v7.3 P0-9: 清理心跳残留
   document.getElementById('anniu-huanren').style.display = '';
   document.getElementById('anniu-chakanjiejue').style.display = 'none';
+  // ⚡ v7.3 P0-8/P0-9: 复位奇遇模式 UI（checkbox 重新显示，文案恢复）
+  const dinglanQiyu = document.getElementById('dinglan-qiyu');
+  const qiyuWenzi = document.getElementById('qiyu-wenzi');
+  if (dinglanQiyu) dinglanQiyu.classList.remove('qiyu-active');
+  if (qiyuWenzi) qiyuWenzi.textContent = '奇遇模式';
   // 恢复DEBUG按钮
   document.getElementById('anniu-tiaoshi').style.display = 'block';
   gengxinJiemian();
